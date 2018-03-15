@@ -8,24 +8,26 @@
 
 import UIKit
 
-struct DialogAction {
-    typealias Handler = ((String) -> Void)
-    
-    var title: String
+public struct DialogAction {
+    public typealias Handler = ((DialogAction) -> Void)
+	
+	var icon: UIImage?
+    var title: String?
     var handler: Handler?
     
-    init(title: String, handler: Handler?) {
+	public init(title: String?, icon: UIImage?, handler: Handler?) {
         self.title = title
+		self.icon = icon
         self.handler = handler
     }
 }
 
 
-final class Dialog: NSObject {
-    public static func `default`(title: String?,
-                                 message: String?,
+public final class Dialog: NSObject {
+    public static func `default`(title: NSAttributedString?,
+                                 message: NSAttributedString?,
                                  actions: [DialogAction]?){
-        
+        DialogDefault.show(title: title, message: message, actions: actions)
     }
     
     public static func image(_ image: UIImage,

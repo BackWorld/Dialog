@@ -7,19 +7,72 @@
 //
 
 import UIKit
+import Dialog
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+		
+		
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+	
+	@IBAction func dialogDefault(_ sender: Any) {
+		let paragraph = NSMutableParagraphStyle()
+		paragraph.alignment = .center
+		let attributes = [
+			NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16),
+			NSParagraphStyleAttributeName: paragraph
+		]
+		Dialog.default(title: NSAttributedString(string: "Title", attributes: attributes), message: NSAttributedString(string: "Message xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"), actions: [
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil),
+			DialogAction(title: "hello2", icon: nil, handler: nil)
+		])
+	}
+	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		let alert = UIAlertController(title: "Long Title", message: "Long Message", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "action1", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action2", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "action3", style: .default, handler: nil))
+		present(alert, animated: true, completion: nil)
+	}
 
 }
 

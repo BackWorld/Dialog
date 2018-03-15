@@ -18,7 +18,36 @@
 		8010D13520597A29005AECFE /* DialogImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010D13420597A29005AECFE /* DialogImage.swift */; };
 		8010D13720597A3A005AECFE /* DialogCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010D13620597A3A005AECFE /* DialogCustom.swift */; };
 		8010D13920597CAB005AECFE /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010D13820597CAB005AECFE /* Dialog.swift */; };
+		80B0E05C205A4389001239A6 /* DialogActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B0E05B205A4389001239A6 /* DialogActionView.swift */; };
+		80B0E05E205A4870001239A6 /* DialogTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B0E05D205A4870001239A6 /* DialogTool.swift */; };
+		80B0E060205A4A4D001239A6 /* DialogBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 80B0E05F205A4A4D001239A6 /* DialogBundle.bundle */; };
+		80B0E061205A4A86001239A6 /* Dialog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8010D1032059795A005AECFE /* Dialog.framework */; };
+		80B0E062205A4A86001239A6 /* Dialog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8010D1032059795A005AECFE /* Dialog.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		80B0E063205A4A86001239A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8010D0FA2059795A005AECFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8010D1022059795A005AECFE;
+			remoteInfo = Dialog;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		80B0E065205A4A86001239A6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				80B0E062205A4A86001239A6 /* Dialog.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8010D1032059795A005AECFE /* Dialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +67,9 @@
 		8010D13420597A29005AECFE /* DialogImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogImage.swift; sourceTree = "<group>"; };
 		8010D13620597A3A005AECFE /* DialogCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogCustom.swift; sourceTree = "<group>"; };
 		8010D13820597CAB005AECFE /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
+		80B0E05B205A4389001239A6 /* DialogActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogActionView.swift; sourceTree = "<group>"; };
+		80B0E05D205A4870001239A6 /* DialogTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogTool.swift; sourceTree = "<group>"; };
+		80B0E05F205A4A4D001239A6 /* DialogBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DialogBundle.bundle; path = "../../../../../../Users/zhuxuhong/Library/Developer/Xcode/DerivedData/Dialog-dzvobsknbjgdwwgrjrmpaoqbjenb/Build/Products/Debug-iphonesimulator/DialogBundle.bundle"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80B0E061205A4A86001239A6 /* Dialog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,11 +122,14 @@
 			isa = PBXGroup;
 			children = (
 				8010D1072059795B005AECFE /* Info.plist */,
+				80B0E05D205A4870001239A6 /* DialogTool.swift */,
 				8010D13820597CAB005AECFE /* Dialog.swift */,
 				8010D130205979E4005AECFE /* DialogViewController.swift */,
 				8010D13220597A13005AECFE /* DialogDefault.swift */,
 				8010D13420597A29005AECFE /* DialogImage.swift */,
 				8010D13620597A3A005AECFE /* DialogCustom.swift */,
+				80B0E05B205A4389001239A6 /* DialogActionView.swift */,
+				80B0E05F205A4A4D001239A6 /* DialogBundle.bundle */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";
@@ -158,10 +194,12 @@
 				8010D10E20597981005AECFE /* Sources */,
 				8010D10F20597981005AECFE /* Frameworks */,
 				8010D11020597981005AECFE /* Resources */,
+				80B0E065205A4A86001239A6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				80B0E064205A4A86001239A6 /* PBXTargetDependency */,
 			);
 			name = DialogDemo;
 			productName = DialogDemo;
@@ -235,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80B0E060205A4A4D001239A6 /* DialogBundle.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +304,8 @@
 			files = (
 				8010D13720597A3A005AECFE /* DialogCustom.swift in Sources */,
 				8010D13920597CAB005AECFE /* Dialog.swift in Sources */,
+				80B0E05C205A4389001239A6 /* DialogActionView.swift in Sources */,
+				80B0E05E205A4870001239A6 /* DialogTool.swift in Sources */,
 				8010D131205979E4005AECFE /* DialogViewController.swift in Sources */,
 				8010D13320597A13005AECFE /* DialogDefault.swift in Sources */,
 				8010D13520597A29005AECFE /* DialogImage.swift in Sources */,
@@ -288,6 +329,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		80B0E064205A4A86001239A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8010D1022059795A005AECFE /* Dialog */;
+			targetProxy = 80B0E063205A4A86001239A6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8010D11820597981005AECFE /* Main.storyboard */ = {
@@ -439,7 +488,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -460,7 +509,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flytoo.Dialog;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -468,13 +517,14 @@
 		8010D12220597981005AECFE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DialogDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flytoo.DialogDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -482,13 +532,14 @@
 		8010D12320597981005AECFE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DialogDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flytoo.DialogDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
