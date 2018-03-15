@@ -11,7 +11,12 @@ import UIKit
 let actionItemHeight: CGFloat = 40
 
 class DialogViewController: UIViewController {
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!{
+        didSet{
+            contentView.clipsToBounds = true
+            contentView.layer.cornerRadius = Dialog.Appearance.shared.cornerRadius
+        }
+    }
 	@IBOutlet weak var informationWrapperView: UIView!
 	@IBOutlet weak var informationWrapperViewHeightConstraint: NSLayoutConstraint!
 	
@@ -23,6 +28,8 @@ class DialogViewController: UIViewController {
 			setupActionView()
 		}
 	}
+    
+    lazy var actionsView = DialogActionView(frame: .zero)
 	
 	class var nibViewController: DialogViewController?{
 		return nil
@@ -40,26 +47,24 @@ class DialogViewController: UIViewController {
 		
 		contentView.alpha = 0
 		contentView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-		
-		remakeLayout()
-	}
+    }
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
 		animate(isShowing: true)
 	}
-	
-	override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-		
-		remakeLayout()
-	}
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        remakeLayout()
+    }
 	
 	fileprivate func remakeLayout(){
+        actionsView.reloadData()
 		makeInformationView()
 		adaptiveLayout()
-		resetScrollView(of: informationWrapperView)
-		resetScrollView(of: actionsWrapperView)
 	}
 	
 	fileprivate func resetScrollView(of view: UIView){
@@ -70,32 +75,48 @@ class DialogViewController: UIViewController {
 		}
 	}
 	
+    var calculatedInformationHeight: CGFloat{
+        return 0
+    }
+    
+    var calculatedActionsHeight: CGFloat{
+        guard let actions = actions, !actions.isEmpty else {
+            return 0
+        }
+        return actions.count != 2
+            ? CGFloat(actions.count) * actionItemHeight
+            : actionItemHeight
+    }
+    
 	fileprivate func adaptiveLayout(){
-		let totalValue = informationWrapperViewHeightConstraint.constant + actionsWrapperViewHeightConstraint.constant
+		let totalValue = calculatedInformationHeight + calculatedActionsHeight
 		
 		let maxValue = UIScreen.main.bounds.height - actionItemHeight * 3
 		
 		guard totalValue > maxValue else {
+            informationWrapperViewHeightConstraint.constant = calculatedInformationHeight
+            actionsWrapperViewHeightConstraint.constant = calculatedActionsHeight
 			return
 		}
 		
-		let textHeight = informationWrapperViewHeightConstraint.constant
-		let actionsHeight = actionsWrapperViewHeightConstraint.constant
 		let actions = self.actions ?? []
-		let actionsMinHeight = actions.count > 2
-			? actionItemHeight * 1.5
+        let actionsMinHeight = actions.isEmpty
+            ? 0
+            : (actions.count > 2 ? actionItemHeight * 1.5
 			: actionItemHeight
-		if textHeight > actionsHeight {
-			actionsWrapperViewHeightConstraint.constant = actionsMinHeight
-			informationWrapperViewHeightConstraint.constant = maxValue - actionsMinHeight
-		}
-		else{
-			let diff = maxValue - textHeight
-			informationWrapperViewHeightConstraint.constant = textHeight
-			actionsWrapperViewHeightConstraint.constant = diff >= actionsMinHeight
-				? diff
-				: actionsMinHeight
-		}
+        )
+        
+        let informationHeight = min(maxValue - actionsMinHeight, calculatedInformationHeight)
+        let actionsHeight = maxValue - informationHeight
+        
+        if informationHeight != calculatedInformationHeight {
+            resetScrollView(of: informationWrapperView)
+        }
+        if actionsHeight != calculatedActionsHeight {
+            resetScrollView(of: actionsWrapperView)
+        }
+        informationWrapperViewHeightConstraint.constant = informationHeight
+		actionsWrapperViewHeightConstraint.constant = actionsHeight
 	}
 	
 	fileprivate func animate(isShowing: Bool){
@@ -126,7 +147,7 @@ class DialogViewController: UIViewController {
 				actionsWrapperViewHeightConstraint.constant = 0
 				return
 		}
-		let v = DialogActionView(frame: .zero)
+		let v = actionsView
 		v.actions = actions
 		v.translatesAutoresizingMaskIntoConstraints = false
 		actionsWrapperView.addSubview(v)
@@ -135,9 +156,5 @@ class DialogViewController: UIViewController {
 		v.bottomAnchor.constraint(equalTo: actionsWrapperView.bottomAnchor).isActive = true
 		v.leadingAnchor.constraint(equalTo: actionsWrapperView.leadingAnchor).isActive = true
 		v.trailingAnchor.constraint(equalTo: actionsWrapperView.trailingAnchor).isActive = true
-		
-		actionsWrapperViewHeightConstraint.constant = actions.count != 2
-			? CGFloat(actions.count) * actionItemHeight
-			: actionItemHeight
 	}
 }

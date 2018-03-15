@@ -12,7 +12,7 @@ final class DialogActionView: UICollectionView{
 	class Cell: UICollectionViewCell {
 		var action: DialogAction!{
 			didSet{
-				button.setTitle(action.title, for: .normal)
+				button.setAttributedTitle(action.title, for: .normal)
 				button.setImage(action.icon, for: .normal)
 			}
 		}
@@ -22,6 +22,9 @@ final class DialogActionView: UICollectionView{
 			btn.backgroundColor = .white
 			btn.translatesAutoresizingMaskIntoConstraints = false
 			btn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+            btn.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpOutside)
+            btn.addTarget(self, action: #selector(buttonTouchUp), for: .touchCancel)
+            btn.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
 			return btn
 		}()
 		
@@ -39,10 +42,19 @@ final class DialogActionView: UICollectionView{
 			super.init(coder: aDecoder)
 		}
 		
-		@objc fileprivate func buttonClicked(){
-			action.handler?(action)
-			(DialogTool.holderViewController(for: self) as? DialogViewController)?.dismiss()
-		}
+        @objc fileprivate func buttonTouchDown(){
+            button.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
+        }
+        
+        @objc fileprivate func buttonTouchUp(){
+            button.backgroundColor = .white
+        }
+        
+        @objc fileprivate func buttonClicked(){
+            button.backgroundColor = .white
+            action.handler?(action)
+            (DialogTool.holderViewController(for: self) as? DialogViewController)?.dismiss()
+        }
 	}
 	
 	var actions: [DialogAction] = []{

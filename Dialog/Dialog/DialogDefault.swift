@@ -16,6 +16,7 @@ class DialogDefault: DialogViewController {
 		tv.isEditable = false
 		tv.isSelectable = false
 		tv.isScrollEnabled = false
+        tv.layoutManager.allowsNonContiguousLayout = false
 		return tv
 	}()
 	
@@ -29,7 +30,17 @@ class DialogDefault: DialogViewController {
 			makeInformationView()
 		}
 	}
-
+    
+    override var calculatedInformationHeight: CGFloat{
+        let isLandscape = UIApplication.shared.statusBarOrientation.isLandscape
+        let isPad = UIDevice.current.userInterfaceIdiom == .pad
+        let ratio: CGFloat = isPad ? 1/3 : (isLandscape ? 1/3 : 2/3)
+        let width = (view.bounds.width * ratio) - 20 - textView.layoutMargins.left - textView.layoutMargins.right
+        let size = CGSize(width: width, height: CGFloat.infinity)
+        let height = information.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).height
+        return height
+    }
+    
 	fileprivate func setupInformationView(){
 		textView.attributedText = information
 		informationWrapperView.addSubview(textView)
@@ -49,10 +60,6 @@ class DialogDefault: DialogViewController {
 		if !informationWrapperView.subviews.contains(textView){
 			setupInformationView()
 		}
-		
-		let size = CGSize(width: informationWrapperView.bounds.width, height: CGFloat.infinity)
-		let height = information.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil).height
-		informationWrapperViewHeightConstraint.constant = height + textView.layoutMargins.top + textView.layoutMargins.bottom
 	}
 	
 	fileprivate func attributedInformation(title: NSAttributedString?, message: NSAttributedString?) -> NSAttributedString{
