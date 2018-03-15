@@ -28,12 +28,6 @@ class DialogViewController: UIViewController {
 		return nil
 	}
 	
-	fileprivate let margin: CGFloat = actionItemHeight
-	
-	fileprivate var wrapperViewMaxHeight: CGFloat{
-		return view.bounds.height - 2 * margin
-	}
-	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -41,26 +35,31 @@ class DialogViewController: UIViewController {
 		view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
 	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		
-		makeInformationView()
-		adaptiveLayout()
-		resetScrollView(of: informationWrapperView)
-		resetScrollView(of: actionsWrapperView)
-	}
-	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		contentView.alpha = 0
 		contentView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+		
+		remakeLayout()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
 		animate(isShowing: true)
+	}
+	
+	override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+		
+		remakeLayout()
+	}
+	
+	fileprivate func remakeLayout(){
+		makeInformationView()
+		adaptiveLayout()
+		resetScrollView(of: informationWrapperView)
+		resetScrollView(of: actionsWrapperView)
 	}
 	
 	fileprivate func resetScrollView(of view: UIView){
@@ -83,7 +82,10 @@ class DialogViewController: UIViewController {
 		
 		let textHeight = informationWrapperViewHeightConstraint.constant
 		let actionsHeight = actionsWrapperViewHeightConstraint.constant
-		let actionsMinHeight = actionItemHeight * 1.5
+		let actions = self.actions ?? []
+		let actionsMinHeight = actions.count > 2
+			? actionItemHeight * 1.5
+			: actionItemHeight
 		if textHeight > actionsHeight {
 			actionsWrapperViewHeightConstraint.constant = actionsMinHeight
 			informationWrapperViewHeightConstraint.constant = maxValue - actionsMinHeight
@@ -98,14 +100,9 @@ class DialogViewController: UIViewController {
 	}
 	
 	fileprivate func animate(isShowing: Bool){
-		guard isShowing else{
-			dismiss(animated: false, completion: nil)
-			return
-		}
-		
-		UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
+		UIView.animate(withDuration: isShowing ? 0.35 : 0.1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
 			self.contentView.transform = CGAffineTransform(scaleX: 1, y: 1)
-			self.contentView.alpha = 1
+			self.contentView.alpha = isShowing ? 1 : 0
 		}, completion: {
 			_ in
 			if !isShowing {
@@ -140,7 +137,7 @@ class DialogViewController: UIViewController {
 		v.leadingAnchor.constraint(equalTo: actionsWrapperView.leadingAnchor).isActive = true
 		v.trailingAnchor.constraint(equalTo: actionsWrapperView.trailingAnchor).isActive = true
 		
-		actionsWrapperViewHeightConstraint.constant = actions.count > 2
+		actionsWrapperViewHeightConstraint.constant = actions.count != 2
 			? CGFloat(actions.count) * actionItemHeight
 			: actionItemHeight
 	}

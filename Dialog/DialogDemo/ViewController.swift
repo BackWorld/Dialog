@@ -24,26 +24,29 @@ class ViewController: UIViewController {
 			NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16),
 			NSParagraphStyleAttributeName: paragraph
 		]
-		Dialog.default(title: NSAttributedString(string: "Title", attributes: attributes), message: NSAttributedString(string: "Message xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"), actions: [
+		Dialog.default(title: nil, message: nil, actions: [
 			DialogAction(title: "hello1", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil),
-			DialogAction(title: "hello2", icon: nil, handler: nil)
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil),
+			DialogAction(title: "hello1", icon: nil, handler: nil)
 		])
 	}
 	

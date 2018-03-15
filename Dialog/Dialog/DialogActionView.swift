@@ -55,6 +55,7 @@ final class DialogActionView: UICollectionView{
 		let layout = UICollectionViewFlowLayout()
 		layout.minimumLineSpacing = 0.5
 		layout.minimumInteritemSpacing = 0.5
+		layout.sectionInset = .zero
 		
 		self.init(frame: frame, collectionViewLayout: layout)
 	}
@@ -75,7 +76,7 @@ final class DialogActionView: UICollectionView{
 	
 	//MARK: - DataSource
 	fileprivate var cellWidth: CGFloat{
-		guard actions.count > 2 else {
+		guard actions.count != 2 else {
 			return (bounds.width - 1) / 2
 		}
 		return bounds.width
@@ -89,6 +90,10 @@ extension DialogActionView: UICollectionViewDelegateFlowLayout{
 }
 
 extension DialogActionView: UICollectionViewDataSource{
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+		return 1
+	}
+	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return actions.count
 	}
