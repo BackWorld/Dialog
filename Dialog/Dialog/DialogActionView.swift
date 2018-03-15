@@ -55,8 +55,6 @@ final class DialogActionView: UICollectionView{
 		let layout = UICollectionViewFlowLayout()
 		layout.minimumLineSpacing = 0.5
 		layout.minimumInteritemSpacing = 0.5
-		layout.sectionInset = .zero
-		
 		self.init(frame: frame, collectionViewLayout: layout)
 	}
 	
@@ -87,6 +85,8 @@ extension DialogActionView: UICollectionViewDelegateFlowLayout{
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: cellWidth, height: actionItemHeight)
 	}
+    
+    
 }
 
 extension DialogActionView: UICollectionViewDataSource{

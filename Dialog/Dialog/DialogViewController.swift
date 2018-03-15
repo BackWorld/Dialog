@@ -20,7 +20,7 @@ class DialogViewController: UIViewController {
     
 	var actions: [DialogAction]?{
 		didSet{
-			makeActions()
+			setupActionView()
 		}
 	}
 	
@@ -66,7 +66,6 @@ class DialogViewController: UIViewController {
 		for sub in view.subviews {
 			if let sc = sub as? UIScrollView{
 				sc.isScrollEnabled = true
-				sc.contentOffset = .zero
 			}
 		}
 	}
@@ -119,7 +118,7 @@ class DialogViewController: UIViewController {
 		animate(isShowing: false)
 	}
 	
-	fileprivate func makeActions(){
+	fileprivate func setupActionView(){
 		guard
 			let actions = actions,
 			!actions.isEmpty else {

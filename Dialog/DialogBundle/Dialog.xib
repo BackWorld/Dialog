@@ -22,7 +22,7 @@
                         <rect key="frame" x="62.666666666666657" y="333.66666666666669" width="249.99999999999997" height="145"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlT-oP-q7c">
-                                <rect key="frame" x="0.6666666666666714" y="101" width="250" height="44"/>
+                                <rect key="frame" x="0.0" y="101" width="250" height="44"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Mas-JO-Vij"/>
@@ -44,17 +44,52 @@
                             <constraint firstAttribute="trailing" secondItem="tlT-oP-q7c" secondAttribute="trailing" id="UQy-yg-SlG"/>
                             <constraint firstAttribute="trailing" secondItem="yrX-CP-Wei" secondAttribute="trailing" id="deX-Wt-nwy"/>
                             <constraint firstItem="yrX-CP-Wei" firstAttribute="top" secondItem="wSZ-xm-EUr" secondAttribute="top" id="dne-W6-jSR"/>
+                            <constraint firstItem="tlT-oP-q7c" firstAttribute="leading" secondItem="wSZ-xm-EUr" secondAttribute="leading" constant="0.33333333333331439" id="ouk-Cx-Jka"/>
                             <constraint firstItem="yrX-CP-Wei" firstAttribute="leading" secondItem="wSZ-xm-EUr" secondAttribute="leading" id="vgS-7n-Ejm"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ouk-Cx-Jka"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="ouk-Cx-Jka"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="wSZ-xm-EUr" firstAttribute="centerY" secondItem="Ayb-nH-Iak" secondAttribute="centerY" id="2lN-Oa-AyL"/>
-                    <constraint firstItem="wSZ-xm-EUr" firstAttribute="width" secondItem="Ayb-nH-Iak" secondAttribute="width" multiplier="2/3" id="727-ow-6no"/>
+                    <constraint firstItem="wSZ-xm-EUr" firstAttribute="width" secondItem="Ayb-nH-Iak" secondAttribute="width" multiplier="1/3" id="BaO-nR-aNq"/>
+                    <constraint firstItem="wSZ-xm-EUr" firstAttribute="width" secondItem="Ayb-nH-Iak" secondAttribute="width" multiplier="2/3" id="eRC-mA-X6e"/>
                     <constraint firstItem="wSZ-xm-EUr" firstAttribute="centerX" secondItem="Ayb-nH-Iak" secondAttribute="centerX" id="uXa-Vc-CAR"/>
+                    <constraint firstItem="wSZ-xm-EUr" firstAttribute="width" secondItem="Ayb-nH-Iak" secondAttribute="width" multiplier="1/3" id="wGn-5y-F6E"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="v5S-LL-Ksm"/>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="BaO-nR-aNq"/>
+                        <exclude reference="eRC-mA-X6e"/>
+                        <exclude reference="wGn-5y-F6E"/>
+                    </mask>
+                </variation>
+                <variation key="heightClass=compact">
+                    <mask key="constraints">
+                        <include reference="BaO-nR-aNq"/>
+                    </mask>
+                </variation>
+                <variation key="heightClass=regular-widthClass=compact">
+                    <mask key="constraints">
+                        <include reference="eRC-mA-X6e"/>
+                    </mask>
+                </variation>
+                <variation key="heightClass=regular-widthClass=regular">
+                    <mask key="constraints">
+                        <include reference="wGn-5y-F6E"/>
+                    </mask>
+                </variation>
             </view>
             <connections>
                 <outlet property="actionsWrapperView" destination="tlT-oP-q7c" id="mAb-AN-PBB"/>
