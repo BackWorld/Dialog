@@ -62,7 +62,10 @@ class DialogDefault: DialogViewController {
 		let attr = NSMutableAttributedString()
 		if let title = title{
 			var attributes = DialogTool.attributes(for: title)
+			let paragraph = NSMutableParagraphStyle()
+			paragraph.lineHeightMultiple = 1.0
 			attributes.updateValue(UIFont.boldSystemFont(ofSize: 16), forKey: NSFontAttributeName)
+			attributes.updateValue(paragraph, forKey: NSParagraphStyleAttributeName)
 			attr.append(NSAttributedString(string: "\n"))
 			attr.append(NSAttributedString(string: title.string, attributes: attributes))
 			attr.append(NSAttributedString(string: "\n"))
