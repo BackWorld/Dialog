@@ -75,7 +75,7 @@ class DialogDefault: DialogViewController {
 	
 	public static func show(title: NSAttributedString?,
 							message: NSAttributedString?,
-							actions: [DialogAction]?,
+							actions: [Dialog.Action]?,
 							configuration: Dialog.Configuration = .default){
 		if let vc = nibViewController as? DialogDefault {
 			vc.configuration = configuration

@@ -1,5 +1,5 @@
 //
-//  DialogActionView.swift
+//  Dialog.ActionView.swift
 //  Dialog
 //
 //  Created by zhuxuhong on 2018/3/15.
@@ -10,7 +10,7 @@ import UIKit
 
 final class DialogActionView: UICollectionView{
 	class Cell: UICollectionViewCell {
-		var action: DialogAction!{
+		var action: Dialog.Action!{
 			didSet{
 				if let icon = action.icon{
 					button.setImage(icon, for: .normal)
@@ -84,7 +84,7 @@ final class DialogActionView: UICollectionView{
 		}
 	}
 	
-	var actions: [DialogAction] = []{
+	var actions: [Dialog.Action] = []{
 		didSet{
 			reloadData()
 		}

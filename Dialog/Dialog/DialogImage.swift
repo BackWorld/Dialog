@@ -39,7 +39,7 @@ class DialogImage: DialogViewController {
 	}
 	
 	public static func show(image: UIImage?,
-							actions: [DialogAction]?,
+							actions: [Dialog.Action]?,
 							configuration: Dialog.Configuration = .default)
 	{
 		if let vc = nibViewController as? DialogImage {

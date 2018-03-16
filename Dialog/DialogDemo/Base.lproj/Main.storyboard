@@ -38,6 +38,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqH-YM-A14">
                                         <rect key="frame" x="0.0" y="100" width="375" height="30"/>
                                         <state key="normal" title="Dialog Custom"/>
+                                        <connections>
+                                            <action selector="dialogCustom:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BC3-4R-0wI"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -74,5 +77,70 @@
             </objects>
             <point key="canvasLocation" x="-639" y="32"/>
         </scene>
+        <!--Action CollectionVC-->
+        <scene sceneID="XPF-58-6T7">
+            <objects>
+                <collectionViewController storyboardIdentifier="ActionCollectionVC" id="GO4-0Q-AhT" customClass="ActionCollectionVC" customModule="SheeterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8mf-mR-7T8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="DB3-p6-0Ox">
+                            <size key="itemSize" width="60" height="60"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Zzk-CA-ZmY" customClass="ActionItemCell" customModule="SheeterDemo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="dIs-Bp-cAo">
+                                            <rect key="frame" x="0.0" y="5" width="60" height="25"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ku-yQ-gzn">
+                                            <rect key="frame" x="0.0" y="35" width="60" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="he7-u8-0OM"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="1ku-yQ-gzn" firstAttribute="leading" secondItem="Zzk-CA-ZmY" secondAttribute="leading" id="6ZZ-Pp-SPh"/>
+                                    <constraint firstItem="dIs-Bp-cAo" firstAttribute="leading" secondItem="Zzk-CA-ZmY" secondAttribute="leading" id="8ci-EU-ish"/>
+                                    <constraint firstAttribute="trailing" secondItem="dIs-Bp-cAo" secondAttribute="trailing" id="aPv-T9-ZIY"/>
+                                    <constraint firstItem="dIs-Bp-cAo" firstAttribute="top" secondItem="Zzk-CA-ZmY" secondAttribute="top" constant="5" id="dEO-sc-hel"/>
+                                    <constraint firstAttribute="bottom" secondItem="1ku-yQ-gzn" secondAttribute="bottom" constant="5" id="sJ3-ta-ksm"/>
+                                    <constraint firstItem="1ku-yQ-gzn" firstAttribute="top" secondItem="dIs-Bp-cAo" secondAttribute="bottom" constant="5" id="stD-CT-DQ9"/>
+                                    <constraint firstAttribute="trailing" secondItem="1ku-yQ-gzn" secondAttribute="trailing" id="yLx-l3-uRu"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="iconIV" destination="dIs-Bp-cAo" id="ZFY-7d-16B"/>
+                                    <outlet property="titleLabel" destination="1ku-yQ-gzn" id="R0E-DN-lkC"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="GO4-0Q-AhT" id="k4I-z6-fnF"/>
+                            <outlet property="delegate" destination="GO4-0Q-AhT" id="1OS-bX-0qQ"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1PR-t5-pd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1183" y="32"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="icon" width="24" height="25"/>
+    </resources>
 </document>

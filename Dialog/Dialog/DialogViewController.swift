@@ -23,7 +23,7 @@ class DialogViewController: UIViewController {
 	@IBOutlet weak var actionsWrapperView: UIView!
 	@IBOutlet weak var actionsWrapperViewHeightConstraint: NSLayoutConstraint!
     
-	var actions: [DialogAction]?{
+	var actions: [Dialog.Action]?{
 		didSet{
 			setupActionView()
 		}
