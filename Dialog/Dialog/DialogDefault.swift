@@ -61,8 +61,10 @@ class DialogDefault: DialogViewController {
 	fileprivate func attributedInformation(title: NSAttributedString?, message: NSAttributedString?) -> NSAttributedString{
 		let attr = NSMutableAttributedString()
 		if let title = title{
+			var attributes = DialogTool.attributes(for: title)
+			attributes.updateValue(UIFont.boldSystemFont(ofSize: 16), forKey: NSFontAttributeName)
 			attr.append(NSAttributedString(string: "\n"))
-			attr.append(title)
+			attr.append(NSAttributedString(string: title.string, attributes: attributes))
 			attr.append(NSAttributedString(string: "\n"))
 		}
 		if let message = message{

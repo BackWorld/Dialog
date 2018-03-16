@@ -64,8 +64,7 @@ final class DialogActionView: UICollectionView{
         }
 		
 		fileprivate func setButtonTitleStyle(title: NSAttributedString){
-			var range = NSMakeRange(0, title.string.characters.count)
-			let attributes = title.attributes(at: 0, effectiveRange: &range)
+			let attributes = DialogTool.attributes(for: title)
 			if let paragraph = attributes[NSParagraphStyleAttributeName] as? NSParagraphStyle{
 				switch paragraph.alignment{
 				case .center:

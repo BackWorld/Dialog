@@ -26,11 +26,10 @@ class ViewController: UIViewController {
 			NSParagraphStyleAttributeName: paragraph,
             NSForegroundColorAttributeName: UIColor.black
 		]
-        Dialog.default(title: NSAttributedString(string: "Title", attributes: attributes),
-					   
-					   message: NSAttributedString(string: "Message", attributes: attributes)
+        Dialog.default(title: NSAttributedString(string: "Title"),
+					   message: NSAttributedString(string: "Message")
 			, actions: [
-						Dialog.Action(title: NSAttributedString(string: "hello1", attributes: attributes), icon: UIImage(named: "icon"), handler: nil),
+						Dialog.Action(title: NSAttributedString(string: "hello1"), icon: UIImage(named: "icon"), handler: nil),
             Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
 		])
 	}
