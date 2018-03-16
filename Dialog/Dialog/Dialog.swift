@@ -23,15 +23,18 @@ public struct DialogAction {
 }
 
 public final class Dialog: NSObject {
-    public class Appearance {
-        public static let shared = Appearance()
+    public class Configuration {
+        public static let `default` = Configuration()
         public var cornerRadius: CGFloat = 0
+		public var isBackgroundViewUserInteractionEnabled = false
     }
     
     public static func `default`(title: NSAttributedString?,
                                  message: NSAttributedString?,
-                                 actions: [DialogAction]?){
-        DialogDefault.show(title: title, message: message, actions: actions)
+                                 actions: [DialogAction]?,
+							configuration: Dialog.Configuration = .default)
+	{
+		DialogDefault.show(title: title, message: message, actions: actions, configuration: configuration)
     }
     
     public static func image(_ image: UIImage,

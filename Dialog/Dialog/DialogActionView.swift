@@ -43,7 +43,7 @@ final class DialogActionView: UICollectionView{
 		}
 		
         @objc fileprivate func buttonTouchDown(){
-            button.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
+            button.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         }
         
         @objc fileprivate func buttonTouchUp(){

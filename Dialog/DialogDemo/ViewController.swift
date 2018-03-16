@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		Dialog.Appearance.shared.cornerRadius = 0
+		Dialog.Configuration.default.isBackgroundViewUserInteractionEnabled = true
+		Dialog.Configuration.default.cornerRadius = 10
     }
 	
 	@IBAction func dialogDefault(_ sender: Any) {

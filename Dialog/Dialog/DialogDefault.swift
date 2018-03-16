@@ -16,7 +16,6 @@ class DialogDefault: DialogViewController {
 		tv.isEditable = false
 		tv.isSelectable = false
 		tv.isScrollEnabled = false
-        tv.layoutManager.allowsNonContiguousLayout = false
 		return tv
 	}()
 	
@@ -79,8 +78,10 @@ class DialogDefault: DialogViewController {
 	
 	public static func show(title: NSAttributedString?,
 							message: NSAttributedString?,
-							actions: [DialogAction]?){
+							actions: [DialogAction]?,
+							configuration: Dialog.Configuration = .default){
 		if let vc = nibViewController as? DialogDefault {
+			vc.configuration = configuration
 			vc.actions = actions
 			vc.information = vc.attributedInformation(title: title, message: message)
 			DialogTool.topViewControllerOfApplicationKeyWindow?.present(vc, animated: false, completion: nil)

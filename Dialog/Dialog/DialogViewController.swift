@@ -14,7 +14,7 @@ class DialogViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!{
         didSet{
             contentView.clipsToBounds = true
-            contentView.layer.cornerRadius = Dialog.Appearance.shared.cornerRadius
+            contentView.layer.cornerRadius = configuration.cornerRadius
         }
     }
 	@IBOutlet weak var informationWrapperView: UIView!
@@ -28,6 +28,8 @@ class DialogViewController: UIViewController {
 			setupActionView()
 		}
 	}
+	
+	var configuration: Dialog.Configuration = .default
     
     lazy var actionsView = DialogActionView(frame: .zero)
 	
@@ -156,5 +158,13 @@ class DialogViewController: UIViewController {
 		v.bottomAnchor.constraint(equalTo: actionsWrapperView.bottomAnchor).isActive = true
 		v.leadingAnchor.constraint(equalTo: actionsWrapperView.leadingAnchor).isActive = true
 		v.trailingAnchor.constraint(equalTo: actionsWrapperView.trailingAnchor).isActive = true
+	}
+	
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesBegan(touches, with: event)
+		
+		if configuration.isBackgroundViewUserInteractionEnabled{
+			dismiss()
+		}
 	}
 }
