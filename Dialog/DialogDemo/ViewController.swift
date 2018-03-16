@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 			NSParagraphStyleAttributeName: paragraph,
             NSForegroundColorAttributeName: UIColor.black
 		]
-        Dialog.default(title: NSAttributedString(string: "TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle"),
+        Dialog.default(title: NSAttributedString(string: "标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题"),
 					   message: NSAttributedString(string: "Message")
 			, actions: [
 						Dialog.Action(title: NSAttributedString(string: "hello1"), icon: UIImage(named: "icon"), handler: nil),
