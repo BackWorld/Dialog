@@ -31,6 +31,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aG5-7i-Nnw">
                                         <rect key="frame" x="0.0" y="50" width="375" height="30"/>
                                         <state key="normal" title="Dialog Image"/>
+                                        <connections>
+                                            <action selector="dialogImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QBJ-nq-Qvr"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqH-YM-A14">
                                         <rect key="frame" x="0.0" y="100" width="375" height="30"/>

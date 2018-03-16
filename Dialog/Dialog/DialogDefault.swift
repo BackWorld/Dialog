@@ -11,7 +11,6 @@ import UIKit
 class DialogDefault: DialogViewController {
 	fileprivate lazy var textView: UITextView = {
 		let tv: UITextView = UITextView(frame: .zero)
-		tv.translatesAutoresizingMaskIntoConstraints = false
 		tv.font = UIFont.systemFont(ofSize: 16)
 		tv.isEditable = false
 		tv.isSelectable = false
@@ -23,41 +22,39 @@ class DialogDefault: DialogViewController {
 		return DialogTool.nibs.first as? DialogDefault
 	}
 	
+	override var informationViewMargin: CGFloat{
+		return 10
+	}
 	
 	fileprivate var information: NSAttributedString!{
 		didSet{
+			textView.attributedText = information
 			makeInformationView()
 		}
 	}
     
     override var calculatedInformationHeight: CGFloat{
+		let margins = textView.layoutMargins
         let isLandscape = UIApplication.shared.statusBarOrientation.isLandscape
         let isPad = UIDevice.current.userInterfaceIdiom == .pad
         let ratio: CGFloat = isPad ? 1/3 : (isLandscape ? 1/3 : 2/3)
-        let width = (view.bounds.width * ratio) - 20 - textView.layoutMargins.left - textView.layoutMargins.right
+        let width = (view.bounds.width * ratio) - 2 * informationViewMargin - margins.left - margins.right
         let size = CGSize(width: width, height: CGFloat.infinity)
-        let height = information.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).height
-        return height
+        let height = information.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil).height
+        return height + margins.top + margins.bottom
     }
     
-	fileprivate func setupInformationView(){
-		textView.attributedText = information
-		informationWrapperView.addSubview(textView)
-		
-		textView.topAnchor.constraint(equalTo: informationWrapperView.topAnchor).isActive = true
-		textView.bottomAnchor.constraint(equalTo: informationWrapperView.bottomAnchor).isActive = true
-		textView.leadingAnchor.constraint(equalTo: informationWrapperView.leadingAnchor, constant: 10).isActive = true
-		textView.trailingAnchor.constraint(equalTo: informationWrapperView.trailingAnchor, constant: -10).isActive = true
+	override var informationView: UIView?{
+		return textView
 	}
 	
 	override func makeInformationView(){
+		super.makeInformationView()
+		
 		guard !information.string.isEmpty else {
 			informationWrapperViewHeightConstraint.constant = 0
 			informationWrapperView.isHidden = true
 			return
-		}
-		if !informationWrapperView.subviews.contains(textView){
-			setupInformationView()
 		}
 	}
 	

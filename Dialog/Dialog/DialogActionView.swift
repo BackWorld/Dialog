@@ -12,8 +12,13 @@ final class DialogActionView: UICollectionView{
 	class Cell: UICollectionViewCell {
 		var action: DialogAction!{
 			didSet{
-				button.setAttributedTitle(action.title, for: .normal)
-				button.setImage(action.icon, for: .normal)
+				if let icon = action.icon{
+					button.setImage(icon, for: .normal)
+				}
+				if let title = action.title {
+					setButtonTitleStyle(title: title)
+					button.setAttributedTitle(action.title, for: .normal)
+				}
 			}
 		}
 		
@@ -21,6 +26,8 @@ final class DialogActionView: UICollectionView{
 			let btn: UIButton = UIButton(type: .system)
 			btn.backgroundColor = .white
 			btn.translatesAutoresizingMaskIntoConstraints = false
+			btn.titleEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 15)
+			btn.imageEdgeInsets = btn.titleEdgeInsets
 			btn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
             btn.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpOutside)
             btn.addTarget(self, action: #selector(buttonTouchUp), for: .touchCancel)
@@ -55,6 +62,26 @@ final class DialogActionView: UICollectionView{
             action.handler?(action)
             (DialogTool.holderViewController(for: self) as? DialogViewController)?.dismiss()
         }
+		
+		fileprivate func setButtonTitleStyle(title: NSAttributedString){
+			var range = NSMakeRange(0, title.string.characters.count)
+			let attributes = title.attributes(at: 0, effectiveRange: &range)
+			if let paragraph = attributes[NSParagraphStyleAttributeName] as? NSParagraphStyle{
+				switch paragraph.alignment{
+				case .center:
+					button.contentHorizontalAlignment = .center
+				case .left:
+					button.contentHorizontalAlignment = .left
+				case .right:
+					button.contentHorizontalAlignment = .right
+				default:
+					button.contentHorizontalAlignment = .center
+				}
+			}
+			if let color = attributes[NSForegroundColorAttributeName] as? UIColor{
+				button.tintColor = color
+			}
+		}
 	}
 	
 	var actions: [DialogAction] = []{

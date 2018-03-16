@@ -33,6 +33,10 @@ class DialogViewController: UIViewController {
     
     lazy var actionsView = DialogActionView(frame: .zero)
 	
+	var informationView: UIView?{
+		return nil
+	}
+	
 	class var nibViewController: DialogViewController?{
 		return nil
 	}
@@ -69,10 +73,10 @@ class DialogViewController: UIViewController {
 		adaptiveLayout()
 	}
 	
-	fileprivate func resetScrollView(of view: UIView){
+	fileprivate func setScrollViews(in view: UIView, isScrollEnabled: Bool){
 		for sub in view.subviews {
 			if let sc = sub as? UIScrollView{
-				sc.isScrollEnabled = true
+				sc.isScrollEnabled = isScrollEnabled
 			}
 		}
 	}
@@ -98,6 +102,8 @@ class DialogViewController: UIViewController {
 		guard totalValue > maxValue else {
             informationWrapperViewHeightConstraint.constant = calculatedInformationHeight
             actionsWrapperViewHeightConstraint.constant = calculatedActionsHeight
+			setScrollViews(in: informationWrapperView!, isScrollEnabled: false)
+			setScrollViews(in: actionsWrapperView, isScrollEnabled: false)
 			return
 		}
 		
@@ -112,10 +118,10 @@ class DialogViewController: UIViewController {
         let actionsHeight = maxValue - informationHeight
         
         if informationHeight != calculatedInformationHeight {
-            resetScrollView(of: informationWrapperView)
+            setScrollViews(in: informationWrapperView, isScrollEnabled: true)
         }
         if actionsHeight != calculatedActionsHeight {
-            resetScrollView(of: actionsWrapperView)
+            setScrollViews(in: actionsWrapperView, isScrollEnabled: true)
         }
         informationWrapperViewHeightConstraint.constant = informationHeight
 		actionsWrapperViewHeightConstraint.constant = actionsHeight
@@ -133,8 +139,23 @@ class DialogViewController: UIViewController {
 		})
 	}
 	
+	var informationViewMargin: CGFloat{
+		return 0
+	}
+	
 	func makeInformationView(){
+		guard
+			let view = informationView,
+			!informationWrapperView.subviews.contains(view) else {
+			return
+		}
+		view.translatesAutoresizingMaskIntoConstraints = false
+		informationWrapperView.addSubview(view)
 		
+		view.topAnchor.constraint(equalTo: informationWrapperView.topAnchor).isActive = true
+		view.bottomAnchor.constraint(equalTo: informationWrapperView.bottomAnchor).isActive = true
+		view.leadingAnchor.constraint(equalTo: informationWrapperView.leadingAnchor, constant: informationViewMargin).isActive = true
+		view.trailingAnchor.constraint(equalTo: informationWrapperView.trailingAnchor, constant: -informationViewMargin).isActive = true
 	}
 	
 	func dismiss() {

@@ -14,29 +14,69 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		Dialog.Configuration.default.isBackgroundViewUserInteractionEnabled = true
-		Dialog.Configuration.default.cornerRadius = 10
+//		Dialog.Configuration.default.isBackgroundViewUserInteractionEnabled = true
+//		Dialog.Configuration.default.cornerRadius = 10
     }
 	
 	@IBAction func dialogDefault(_ sender: Any) {
 		let paragraph = NSMutableParagraphStyle()
-		paragraph.alignment = .left
+		paragraph.alignment = .right
 		let attributes = [
 			NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16),
 			NSParagraphStyleAttributeName: paragraph,
             NSForegroundColorAttributeName: UIColor.black
 		]
-        Dialog.default(title: NSAttributedString(string: "Title", attributes: attributes), message: NSAttributedString(string: "Message xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"), actions: [
-            DialogAction(title: NSAttributedString(string: "hello1", attributes: attributes), icon: nil, handler: nil),
+        Dialog.default(title: NSAttributedString(string: "Title", attributes: attributes),
+					   
+					   message: NSAttributedString(string: "Message", attributes: attributes)
+			, actions: [
+						DialogAction(title: NSAttributedString(string: "hello1", attributes: attributes), icon: UIImage(named: "icon"), handler: nil),
             DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
 		])
 	}
 	
+	@IBAction func dialogImage(_ sender: Any) {
+		let paragraph = NSMutableParagraphStyle()
+		paragraph.alignment = .left
+		let attributes = [
+			NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16),
+			NSParagraphStyleAttributeName: paragraph,
+			NSForegroundColorAttributeName: UIColor.black
+		]
+		Dialog.image(UIImage(named: "image"), actions: [
+			DialogAction(title: NSAttributedString(string: "hello1", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+		])
+	}
+	
+	@IBAction func dialogCustom(_ sender: Any) {
+		let paragraph = NSMutableParagraphStyle()
+		paragraph.alignment = .left
+		let attributes = [
+			NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16),
+			NSParagraphStyleAttributeName: paragraph,
+			NSForegroundColorAttributeName: UIColor.black
+		]
+		Dialog.default(title: NSAttributedString(string: "Title", attributes: attributes),
+					   message: NSAttributedString(string: "Message", attributes: attributes), actions: [
+						DialogAction(title: NSAttributedString(string: "hello1", attributes: attributes), icon: nil, handler: nil),
+						DialogAction(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+						])
+	}
+	
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		let alert = UIAlertController(title: "Long Title", message: "Message xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "action1", style: .default, handler: nil))
-		alert.addAction(UIAlertAction(title: "action2", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+		
 	}
 
 }
