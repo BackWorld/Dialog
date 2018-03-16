@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F6k-6V-NEJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F6k-6V-NEJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,6 +14,10 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DialogDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gkj-13-z1n"/>
+                        <viewControllerLayoutGuide type="bottom" id="OaZ-yq-ivI"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,11 +51,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vHf-lA-p6J" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hyI-xq-Y1z"/>
-                            <constraint firstItem="vHf-lA-p6J" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="m1w-qZ-fMQ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vHf-lA-p6J" secondAttribute="trailing" id="nxG-Gq-6jt"/>
+                            <constraint firstItem="vHf-lA-p6J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hyI-xq-Y1z"/>
+                            <constraint firstItem="vHf-lA-p6J" firstAttribute="top" secondItem="gkj-13-z1n" secondAttribute="bottom" constant="20" id="m1w-qZ-fMQ"/>
+                            <constraint firstAttribute="trailing" secondItem="vHf-lA-p6J" secondAttribute="trailing" id="nxG-Gq-6jt"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="7GT-E3-8z7"/>
                 </viewController>
@@ -80,7 +83,7 @@
         <!--Action CollectionVC-->
         <scene sceneID="XPF-58-6T7">
             <objects>
-                <collectionViewController storyboardIdentifier="ActionCollectionVC" id="GO4-0Q-AhT" customClass="ActionCollectionVC" customModule="SheeterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ActionCollectionVC" id="GO4-0Q-AhT" customClass="ActionCollectionVC" customModule="DialogDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8mf-mR-7T8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,7 +95,7 @@
                             <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Zzk-CA-ZmY" customClass="ActionItemCell" customModule="SheeterDemo" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Zzk-CA-ZmY" customClass="ActionItemCell" customModule="DialogDemo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

@@ -9,17 +9,10 @@
 import UIKit
 
 struct DialogTool {
-	static var xibBundle: Bundle?{
-		guard
-			let path = Bundle.main.path(forResource: "Frameworks/Dialog.framework/DialogBundle", ofType: "bundle"),
-			let bundle = Bundle(path: path) else{
-				return nil
-		}
-		return bundle
-	}
+	static let resourcePath = "Frameworks/Dialog.framework"
 	
 	static var nibs: [Any]{
-		return xibBundle?.loadNibNamed("Dialog", owner: nil, options: nil) ?? []
+		return Bundle.main.loadNibNamed("\(resourcePath)/Dialog", owner: nil, options: nil) ?? []
 	}
 	
 	static func holderViewController(for view: UIView) -> UIViewController? {
