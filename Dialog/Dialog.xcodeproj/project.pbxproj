@@ -20,6 +20,7 @@
 		801259D8205BADD7004AC355 /* Dialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 801259D7205BADD7004AC355 /* Dialog.xib */; };
 		801259D9205BAEA1004AC355 /* Dialog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8010D1032059795A005AECFE /* Dialog.framework */; };
 		801259DA205BAEA1004AC355 /* Dialog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8010D1032059795A005AECFE /* Dialog.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		804FE95B205C322100699C94 /* DialogExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FE95A205C322100699C94 /* DialogExtensions.swift */; };
 		80870261205B70EE009B7717 /* ActionCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80870260205B70EE009B7717 /* ActionCollectionVC.swift */; };
 		80B0E05C205A4389001239A6 /* DialogActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B0E05B205A4389001239A6 /* DialogActionView.swift */; };
 		80B0E05E205A4870001239A6 /* DialogTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B0E05D205A4870001239A6 /* DialogTool.swift */; };
@@ -65,6 +66,7 @@
 		8010D13620597A3A005AECFE /* DialogCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogCustom.swift; sourceTree = "<group>"; };
 		8010D13820597CAB005AECFE /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		801259D7205BADD7004AC355 /* Dialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Dialog.xib; sourceTree = "<group>"; };
+		804FE95A205C322100699C94 /* DialogExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogExtensions.swift; sourceTree = "<group>"; };
 		80870260205B70EE009B7717 /* ActionCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCollectionVC.swift; sourceTree = "<group>"; };
 		80B0E05B205A4389001239A6 /* DialogActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogActionView.swift; sourceTree = "<group>"; };
 		80B0E05D205A4870001239A6 /* DialogTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogTool.swift; sourceTree = "<group>"; };
@@ -111,13 +113,14 @@
 			isa = PBXGroup;
 			children = (
 				8010D1072059795B005AECFE /* Info.plist */,
-				80B0E05D205A4870001239A6 /* DialogTool.swift */,
 				8010D13820597CAB005AECFE /* Dialog.swift */,
 				8010D130205979E4005AECFE /* DialogViewController.swift */,
 				8010D13220597A13005AECFE /* DialogDefault.swift */,
 				8010D13420597A29005AECFE /* DialogImage.swift */,
 				8010D13620597A3A005AECFE /* DialogCustom.swift */,
+				804FE95A205C322100699C94 /* DialogExtensions.swift */,
 				80B0E05B205A4389001239A6 /* DialogActionView.swift */,
+				80B0E05D205A4870001239A6 /* DialogTool.swift */,
 				801259D7205BADD7004AC355 /* Dialog.xib */,
 			);
 			path = Dialog;
@@ -256,6 +259,7 @@
 				8010D13720597A3A005AECFE /* DialogCustom.swift in Sources */,
 				8010D13920597CAB005AECFE /* Dialog.swift in Sources */,
 				80B0E05C205A4389001239A6 /* DialogActionView.swift in Sources */,
+				804FE95B205C322100699C94 /* DialogExtensions.swift in Sources */,
 				80B0E05E205A4870001239A6 /* DialogTool.swift in Sources */,
 				8010D131205979E4005AECFE /* DialogViewController.swift in Sources */,
 				8010D13320597A13005AECFE /* DialogDefault.swift in Sources */,

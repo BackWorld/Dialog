@@ -19,43 +19,23 @@ class ViewController: UIViewController {
     }
 	
 	@IBAction func dialogDefault(_ sender: Any) {
-		let paragraph = NSMutableParagraphStyle()
-		paragraph.alignment = .right
-		let attributes = [
-			NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16),
-			NSParagraphStyleAttributeName: paragraph,
-            NSForegroundColorAttributeName: UIColor.black
-		]
-        Dialog.default(title: NSAttributedString(string: "标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题"),
-					   message: NSAttributedString(string: "Message")
-			, actions: [
-						Dialog.Action(title: NSAttributedString(string: "hello1"), icon: UIImage(named: "icon"), handler: nil),
-            Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-		])
+//        Dialog.Configuration.default.primaryColor = .orange
+        
+        Dialog.default(title: .init("标题"),
+                       message: .init("消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息"),
+                       actions:
+            [
+                Dialog.Action(title: "Default"),
+                Dialog.Action(title: "Cancel", style: .cancel),
+                Dialog.Action(title: "Destructive", style: .destructive),
+                Dialog.Action(title: "Custom", style: .custom(tintColor: .green, alignment: .right, isPrimary: true)),
+            ]
+        )
 	}
 	
 	@IBAction func dialogImage(_ sender: Any) {
-		let paragraph = NSMutableParagraphStyle()
-		paragraph.alignment = .left
-		let attributes = [
-			NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16),
-			NSParagraphStyleAttributeName: paragraph,
-			NSForegroundColorAttributeName: UIColor.black
-		]
 		Dialog.image(UIImage(named: "image"), actions: [
-			Dialog.Action(title: NSAttributedString(string: "hello1", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
-			Dialog.Action(title: NSAttributedString(string: "hello2", attributes: attributes), icon: nil, handler: nil),
+			Dialog.Action(title: "hello1")
 		])
 	}
 	
@@ -65,23 +45,26 @@ class ViewController: UIViewController {
 		vc.collectionView?.delegate = self
 		
 		Dialog.custom(vc.view, actions: [
-			Dialog.Action(title: NSAttributedString(string: "Cancel"))
+			Dialog.Action(title: "Cancel")
 		])
 	}
 	
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		
+		let alert = UIAlertController(title: "Title", message: "Message"  , preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Default", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Destructive", style: .destructive, handler: nil))
+        present(alert, animated: true, completion: nil)
 	}
 
 }
 
 extension ViewController: UICollectionViewDelegate{
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		print("You clicked Action Item \(indexPath.item)")
-		
-		Dialog.default(title: NSAttributedString(string: "You clicked Action Item \(indexPath.item)"), actions: [
-			Dialog.Action(title: NSAttributedString(string: "Ok"))
-		])
+        
+        Dialog.default(title: .init("You clicked Action Item \(indexPath.item)"), actions: [
+            Dialog.Action(title: "Ok")
+        ])
 	}
 }
 

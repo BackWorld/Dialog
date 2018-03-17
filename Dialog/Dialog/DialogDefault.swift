@@ -15,6 +15,7 @@ class DialogDefault: DialogViewController {
 		tv.isEditable = false
 		tv.isSelectable = false
 		tv.isScrollEnabled = false
+        tv.textColor = Dialog.Configuration.default.primaryColor
 		return tv
 	}()
 	
@@ -58,28 +59,25 @@ class DialogDefault: DialogViewController {
 		}
 	}
 	
-	fileprivate func attributedInformation(title: NSAttributedString?, message: NSAttributedString?) -> NSAttributedString{
+	fileprivate func attributedInformation(title: Dialog.Title?, message: Dialog.Message?) -> NSAttributedString{
 		let attr = NSMutableAttributedString()
-		if let title = title{
-			var attributes = DialogTool.attributes(for: title)
-			let paragraph = NSMutableParagraphStyle()
-			paragraph.lineHeightMultiple = 1.5
-			attributes.updateValue(UIFont.boldSystemFont(ofSize: 16), forKey: NSFontAttributeName)
-			attributes.updateValue(paragraph, forKey: NSParagraphStyleAttributeName)
+		if var title = title,
+            let text = title.text{
 			attr.append(NSAttributedString(string: "\n"))
-			attr.append(NSAttributedString(string: title.string, attributes: attributes))
+			attr.append(NSAttributedString(string: text, attributes: title.attributes))
 			attr.append(NSAttributedString(string: "\n"))
 		}
-		if let message = message{
+		if let message = message,
+            let text = message.text{
 			attr.append(NSAttributedString(string: "\n"))
-			attr.append(message)
+            attr.append(NSAttributedString(string: text, attributes: message.attributes))
 			attr.append(NSAttributedString(string: "\n"))
 		}
 		return attr
 	}
 	
-	public static func show(title: NSAttributedString?,
-							message: NSAttributedString?,
+	public static func show(title: Dialog.Title?,
+							message: Dialog.Message?,
 							actions: [Dialog.Action]?,
 							configuration: Dialog.Configuration = .default){
 		if let vc = nibViewController as? DialogDefault {

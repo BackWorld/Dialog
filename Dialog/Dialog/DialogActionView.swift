@@ -15,9 +15,12 @@ final class DialogActionView: UICollectionView{
 				if let icon = action.icon{
 					button.setImage(icon, for: .normal)
 				}
-				if let title = action.title {
-					setButtonTitleStyle(title: title)
-					button.setAttributedTitle(action.title, for: .normal)
+                if let title = action.title {
+                    button.titleLabel?.font = action.style.font
+                    button.contentHorizontalAlignment = action.style.alignment
+                    button.tintColor = action.style.tintColor
+                    button.titleLabel?.text = title
+                    button.setTitle(title, for: .normal)
 				}
 			}
 		}
@@ -62,25 +65,6 @@ final class DialogActionView: UICollectionView{
             action.handler?(action)
             (DialogTool.holderViewController(for: self) as? DialogViewController)?.dismiss()
         }
-		
-		fileprivate func setButtonTitleStyle(title: NSAttributedString){
-			let attributes = DialogTool.attributes(for: title)
-			if let paragraph = attributes[NSParagraphStyleAttributeName] as? NSParagraphStyle{
-				switch paragraph.alignment{
-				case .center:
-					button.contentHorizontalAlignment = .center
-				case .left:
-					button.contentHorizontalAlignment = .left
-				case .right:
-					button.contentHorizontalAlignment = .right
-				default:
-					button.contentHorizontalAlignment = .center
-				}
-			}
-			if let color = attributes[NSForegroundColorAttributeName] as? UIColor{
-				button.tintColor = color
-			}
-		}
 	}
 	
 	var actions: [Dialog.Action] = []{
@@ -123,8 +107,6 @@ extension DialogActionView: UICollectionViewDelegateFlowLayout{
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: cellWidth, height: actionItemHeight)
 	}
-    
-    
 }
 
 extension DialogActionView: UICollectionViewDataSource{
