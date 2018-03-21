@@ -35,6 +35,10 @@ class DialogDefault: DialogViewController {
 	}
     
     override var calculatedInformationHeight: CGFloat{
+		guard !textView.attributedText.string.isEmpty else {
+			return 0
+		}
+		
 		let margins = textView.layoutMargins
         let isLandscape = UIApplication.shared.statusBarOrientation.isLandscape
         let isPad = UIDevice.current.userInterfaceIdiom == .pad

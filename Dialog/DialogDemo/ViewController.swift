@@ -21,8 +21,8 @@ class ViewController: UIViewController {
 	@IBAction func dialogDefault(_ sender: Any) {
 //        Dialog.Configuration.default.primaryColor = .orange
         
-        Dialog.default(title: .init("标题"),
-                       message: .init("消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息"),
+        Dialog.default(title: nil,
+                       message: nil,
                        actions:
             [
                 Dialog.Action(title: "Default"),
