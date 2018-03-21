@@ -62,8 +62,10 @@ final class DialogActionView: UICollectionView{
         
         @objc fileprivate func buttonClicked(){
             button.backgroundColor = .white
-            action.handler?(action)
-            (DialogTool.holderViewController(for: self) as? DialogViewController)?.dismiss()
+			(DialogTool.holderViewController(for: self) as? DialogViewController)?.dismiss(completion: {
+				[unowned self] in
+				self.action.handler?(self.action)
+			})
         }
 	}
 	

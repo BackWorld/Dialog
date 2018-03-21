@@ -127,14 +127,14 @@ class DialogViewController: UIViewController {
 		actionsWrapperViewHeightConstraint.constant = actionsHeight
 	}
 	
-	fileprivate func animate(isShowing: Bool){
+	fileprivate func animate(isShowing: Bool, completion: (() -> Void)? = nil){
 		UIView.animate(withDuration: isShowing ? 0.35 : 0.1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
 			self.contentView.transform = CGAffineTransform(scaleX: 1, y: 1)
 			self.contentView.alpha = isShowing ? 1 : 0
 		}, completion: {
 			_ in
 			if !isShowing {
-				self.dismiss(animated: false, completion: nil)
+				self.dismiss(animated: false, completion: completion)
 			}
 		})
 	}
@@ -158,8 +158,8 @@ class DialogViewController: UIViewController {
 		view.trailingAnchor.constraint(equalTo: informationWrapperView.trailingAnchor, constant: -informationViewMargin).isActive = true
 	}
 	
-	func dismiss() {
-		animate(isShowing: false)
+	func dismiss(completion: (() -> Void)?) {
+		animate(isShowing: false, completion: completion)
 	}
 	
 	fileprivate func setupActionView(){
@@ -185,7 +185,7 @@ class DialogViewController: UIViewController {
 		super.touchesBegan(touches, with: event)
 		
 		if configuration.isBackgroundViewUserInteractionEnabled{
-			dismiss()
+			dismiss(completion: nil)
 		}
 	}
 }
