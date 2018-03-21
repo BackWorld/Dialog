@@ -8,24 +8,31 @@
 
 import UIKit
 
-public extension Dialog{
-    public struct Message{
-        public var text: String?
-        public var attributes: [String: Any] = [:]
-        
-        public init(_ text: String?,
-                    attributes: [String: Any] = [:])
-        {
-            self.text = text
-            self.attributes = attributes
-        }
-    }
+public extension Dialog {
+	public class Configuration {
+		public static let `default` = Configuration()
+		
+		public var cornerRadius: Int = 0{
+			didSet{
+				if cornerRadius < 0 {
+					cornerRadius = 0
+				}
+				else if cornerRadius > 20{
+					cornerRadius = 20
+				}
+			}
+		}
+		public var isBackgroundViewUserInteractionEnabled = false
+		public var primaryColor: UIColor = .black
+		
+		public init(){
+		}
+	}
 }
 
-
 public extension Dialog{
-    public struct Title{
-        public var text: String?
+    public class Title {
+        public var text: String? = nil
         public var color: UIColor = Dialog.Configuration.default.primaryColor
         public var alignment: NSTextAlignment = .center{
             didSet{
@@ -49,6 +56,9 @@ public extension Dialog{
             return attributes
         }()
 
+		public init(){
+		}
+		
         public init(_ text: String?,
                     color: UIColor = Dialog.Configuration.default.primaryColor,
                 alignment: NSTextAlignment = .center)
@@ -60,26 +70,35 @@ public extension Dialog{
     }
 }
 
-public extension Dialog {
-    public class Configuration: NSObject {
-        public static let `default` = Configuration()
-        
-        public var cornerRadius: CGFloat = 0
-        public var isBackgroundViewUserInteractionEnabled = false
-        public var primaryColor: UIColor = .black
-    }
+public extension Dialog{
+	public class Message {
+		public var text: String? = nil
+		public var attributes: [String: Any] = [:]
+		
+		public init(){
+		}
+		
+		public init(_ text: String?,
+					attributes: [String: Any] = [:])
+		{
+			self.text = text
+			self.attributes = attributes
+		}
+	}
 }
 
-
 public extension Dialog {
-    public struct Action {
+	public class Action {
         public typealias Handler = ((Action) -> Void)
 
-        var icon: UIImage?
-        var title: String?
+        public var icon: UIImage? = nil
+        public var title: String? = nil
         var handler: Handler?
-        var style: Action.Style = .default
-        
+        public var style: Action.Style = .default
+		
+		public init(){
+		}
+		
         public init(title: String? = nil, icon: UIImage? = nil, style: Action.Style = .default, handler: Handler? = nil) {
             self.title = title
             self.icon = icon
@@ -90,7 +109,7 @@ public extension Dialog {
 }
 
 public extension Dialog.Action{
-    public struct Style{
+	public class Style {
         public static let `default` = Style()
         public static let cancel = Style.custom(isPrimary: true)
         public static let destructive = Style.custom(tintColor: .red)
@@ -104,9 +123,9 @@ public extension Dialog.Action{
                 ? .boldSystemFont(ofSize: 16)
                 : .systemFont(ofSize: 16)
         }
-        
+		
         public static func custom(tintColor: UIColor = Dialog.Configuration.default.primaryColor, alignment: UIControlContentHorizontalAlignment = .center, isPrimary: Bool = false) -> Style{
-            var instance = Style()
+            let instance = Style()
             instance.tintColor = tintColor
             instance.alignment = alignment
             instance.isPrimary = isPrimary

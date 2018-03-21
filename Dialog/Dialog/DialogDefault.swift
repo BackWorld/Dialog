@@ -65,7 +65,7 @@ class DialogDefault: DialogViewController {
 	
 	fileprivate func attributedInformation(title: Dialog.Title?, message: Dialog.Message?) -> NSAttributedString{
 		let attr = NSMutableAttributedString()
-		if var title = title,
+		if let title = title,
             let text = title.text{
 			attr.append(NSAttributedString(string: "\n"))
 			attr.append(NSAttributedString(string: text, attributes: title.attributes))

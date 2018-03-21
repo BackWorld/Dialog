@@ -14,7 +14,6 @@ class DialogViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!{
         didSet{
             contentView.clipsToBounds = true
-            contentView.layer.cornerRadius = configuration.cornerRadius
         }
     }
 	@IBOutlet weak var informationWrapperView: UIView!
@@ -23,7 +22,7 @@ class DialogViewController: UIViewController {
 	@IBOutlet weak var actionsWrapperView: UIView!
 	@IBOutlet weak var actionsWrapperViewHeightConstraint: NSLayoutConstraint!
     
-	var actions: [Dialog.Action]?{
+	var actions: [Dialog.Action]? = nil{
 		didSet{
 			setupActionView()
 		}
@@ -51,6 +50,7 @@ class DialogViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		contentView.layer.cornerRadius = CGFloat(configuration.cornerRadius)
 		contentView.alpha = 0
 		contentView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
     }
