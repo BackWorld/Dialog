@@ -80,11 +80,11 @@ public extension Dialog {
         var handler: Handler?
         var style: Action.Style = .default
         
-        public init(title: String? = nil, icon: UIImage? = nil, handler: Handler? = nil, style: Action.Style = .default) {
+        public init(title: String? = nil, icon: UIImage? = nil, style: Action.Style = .default, handler: Handler? = nil) {
             self.title = title
             self.icon = icon
+			self.style = style
             self.handler = handler
-            self.style = style
         }
     }
 }
