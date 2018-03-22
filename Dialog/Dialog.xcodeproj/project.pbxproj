@@ -131,16 +131,24 @@
 		8010D11320597981005AECFE /* DialogDemo */ = {
 			isa = PBXGroup;
 			children = (
-				8010D11420597981005AECFE /* AppDelegate.swift */,
 				8010D11620597981005AECFE /* ViewController.swift */,
+				806BD3C820625EAF00E82F9F /* DemoDialogDefaultVC.swift */,
 				80870260205B70EE009B7717 /* ActionCollectionVC.swift */,
 				8010D11820597981005AECFE /* Main.storyboard */,
+				806BD3CA2063793A00E82F9F /* Other */,
+			);
+			path = DialogDemo;
+			sourceTree = "<group>";
+		};
+		806BD3CA2063793A00E82F9F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				8010D11420597981005AECFE /* AppDelegate.swift */,
 				8010D11B20597981005AECFE /* Assets.xcassets */,
 				8010D11D20597981005AECFE /* LaunchScreen.storyboard */,
 				8010D12020597981005AECFE /* Info.plist */,
-				806BD3C820625EAF00E82F9F /* DemoDialogDefaultVC.swift */,
 			);
-			path = DialogDemo;
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

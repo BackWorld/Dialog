@@ -12,16 +12,12 @@ final class DialogActionView: UICollectionView{
 	class Cell: UICollectionViewCell {
 		var action: Dialog.Action!{
 			didSet{
-				if let icon = action.icon{
-					button.setImage(icon, for: .normal)
-				}
-                if let title = action.title {
-                    button.titleLabel?.font = action.style.font
-                    button.contentHorizontalAlignment = action.style.alignment
-                    button.tintColor = action.style.tintColor
-                    button.titleLabel?.text = title
-                    button.setTitle(title, for: .normal)
-				}
+				button.setImage(action.icon, for: .normal)
+				button.titleLabel?.font = action.style.font
+				button.contentHorizontalAlignment = action.style.alignment
+				button.tintColor = action.style.tintColor
+				button.titleLabel?.text = action.title
+				button.setTitle(action.title, for: .normal)
 			}
 		}
 		

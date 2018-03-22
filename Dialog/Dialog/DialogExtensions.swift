@@ -45,8 +45,9 @@ public extension Dialog{
             }
         }
         
-        lazy var attributes: [String: Any] = {
+		var attributes: [String: Any] {
             var attributes: [String: Any] = [
+				NSForegroundColorAttributeName: self.color,
                 NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16)
             ]
             let paragraph = NSMutableParagraphStyle()
@@ -54,7 +55,7 @@ public extension Dialog{
             paragraph.alignment = self.alignment
             attributes.updateValue(paragraph, forKey: NSParagraphStyleAttributeName)
             return attributes
-        }()
+		}
 
 		public init(){
 		}
@@ -111,24 +112,24 @@ public extension Dialog {
 public extension Dialog.Action{
 	public class Style {
         public static let `default` = Style()
-        public static let cancel = Style.custom(isPrimary: true)
+        public static let cancel = Style.custom(isBold: true)
         public static let destructive = Style.custom(tintColor: .red)
         
         public var tintColor: UIColor = Dialog.Configuration.default.primaryColor
         public var alignment: UIControlContentHorizontalAlignment = .center
-        public var isPrimary = false //是否加重显示
+        public var isBold = false //是否加重显示
         
         var font: UIFont{
-            return isPrimary
+            return isBold
                 ? .boldSystemFont(ofSize: 16)
                 : .systemFont(ofSize: 16)
         }
 		
-        public static func custom(tintColor: UIColor = Dialog.Configuration.default.primaryColor, alignment: UIControlContentHorizontalAlignment = .center, isPrimary: Bool = false) -> Style{
+        public static func custom(tintColor: UIColor = Dialog.Configuration.default.primaryColor, alignment: UIControlContentHorizontalAlignment = .center, isBold: Bool = false) -> Style{
             let instance = Style()
             instance.tintColor = tintColor
             instance.alignment = alignment
-            instance.isPrimary = isPrimary
+            instance.isBold = isBold
             return instance
         }
     }
