@@ -74,24 +74,32 @@ public extension Dialog{
 public extension Dialog{
 	public class Message {
 		public var text: String? = nil
-		public lazy var attributes: [String: Any] = {
-			let paragraph = NSMutableParagraphStyle()
-			paragraph.lineHeightMultiple = 1.5
-			paragraph.alignment = .center
-			return [
-				NSFontAttributeName: UIFont.systemFont(ofSize: 14),
-				NSParagraphStyleAttributeName: paragraph
-			]
-		}()
+		public var attributedText: NSAttributedString? = nil
+		
+		var attributedString: NSAttributedString?{
+			if let text = text {
+				let paragraph = NSMutableParagraphStyle()
+				paragraph.lineHeightMultiple = 1.5
+				paragraph.alignment = .center
+				return NSAttributedString(string: text, attributes: [
+					NSFontAttributeName: UIFont.systemFont(ofSize: 14),
+					NSParagraphStyleAttributeName: paragraph
+				])
+			}
+			else if let attributedText = attributedText {
+				return attributedText
+			}
+			return nil
+		}
 		
 		public init(){
 		}
 		
-		public init(_ text: String?,
-					attributes: [String: Any] = [:])
-		{
+		public init(_ text: String?){
 			self.text = text
-			self.attributes = attributes
+		}
+		public init(attributedText: NSAttributedString?){
+			self.attributedText = attributedText
 		}
 	}
 }

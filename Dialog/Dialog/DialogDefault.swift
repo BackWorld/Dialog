@@ -72,10 +72,10 @@ class DialogDefault: DialogViewController {
 			attr.append(NSAttributedString(string: "\n"))
 		}
 		if let message = message,
-			let text = message.text,
-			!text.isEmpty {
+			let attrString = message.attributedString,
+			!attrString.string.isEmpty {
 			attr.append(NSAttributedString(string: "\n"))
-            attr.append(NSAttributedString(string: text, attributes: message.attributes))
+            attr.append(attrString)
 			attr.append(NSAttributedString(string: "\n"))
 		}
 		return attr
