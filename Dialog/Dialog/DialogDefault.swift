@@ -11,7 +11,6 @@ import UIKit
 class DialogDefault: DialogViewController {
 	fileprivate lazy var textView: UITextView = {
 		let tv: UITextView = UITextView(frame: .zero)
-		tv.font = UIFont.systemFont(ofSize: 16)
 		tv.isEditable = false
 		tv.isSelectable = false
 		tv.isScrollEnabled = false

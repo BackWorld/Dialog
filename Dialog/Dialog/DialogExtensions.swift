@@ -74,7 +74,15 @@ public extension Dialog{
 public extension Dialog{
 	public class Message {
 		public var text: String? = nil
-		public var attributes: [String: Any] = [:]
+		public lazy var attributes: [String: Any] = {
+			let paragraph = NSMutableParagraphStyle()
+			paragraph.lineHeightMultiple = 1.5
+			paragraph.alignment = .center
+			return [
+				NSFontAttributeName: UIFont.systemFont(ofSize: 14),
+				NSParagraphStyleAttributeName: paragraph
+			]
+		}()
 		
 		public init(){
 		}
