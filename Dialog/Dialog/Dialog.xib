@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="17D102" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,17 +22,17 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSZ-xm-EUr">
-                        <rect key="frame" x="62.5" y="261" width="250" height="145"/>
+                        <rect key="frame" x="50.5" y="261" width="274" height="145"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlT-oP-q7c">
-                                <rect key="frame" x="0.5" y="101" width="250" height="44"/>
+                                <rect key="frame" x="0.5" y="101" width="274" height="44"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Mas-JO-Vij"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrX-CP-Wei">
-                                <rect key="frame" x="0.5" y="0.0" width="250" height="100"/>
+                                <rect key="frame" x="0.5" y="0.0" width="274" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="jQU-jO-ceP"/>
@@ -65,7 +66,7 @@
                 <constraints>
                     <constraint firstItem="wSZ-xm-EUr" firstAttribute="centerY" secondItem="Ayb-nH-Iak" secondAttribute="centerY" id="2lN-Oa-AyL"/>
                     <constraint firstItem="wSZ-xm-EUr" firstAttribute="width" secondItem="Ayb-nH-Iak" secondAttribute="width" multiplier="1/3" id="BaO-nR-aNq"/>
-                    <constraint firstItem="wSZ-xm-EUr" firstAttribute="width" secondItem="Ayb-nH-Iak" secondAttribute="width" multiplier="2/3" id="eRC-mA-X6e"/>
+                    <constraint firstItem="wSZ-xm-EUr" firstAttribute="width" secondItem="Ayb-nH-Iak" secondAttribute="width" multiplier="2/3" constant="24" id="eRC-mA-X6e"/>
                     <constraint firstItem="wSZ-xm-EUr" firstAttribute="centerX" secondItem="Ayb-nH-Iak" secondAttribute="centerX" id="uXa-Vc-CAR"/>
                     <constraint firstItem="wSZ-xm-EUr" firstAttribute="width" secondItem="Ayb-nH-Iak" secondAttribute="width" multiplier="1/3" id="wGn-5y-F6E"/>
                 </constraints>
@@ -111,17 +112,17 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbK-OR-5NO">
-                        <rect key="frame" x="62.5" y="261" width="250" height="145"/>
+                        <rect key="frame" x="50.5" y="261" width="274" height="145"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtO-Dh-OR6">
-                                <rect key="frame" x="0.5" y="101" width="250" height="44"/>
+                                <rect key="frame" x="0.5" y="101" width="274" height="44"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="f85-0f-0KY"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Utn-aE-i4y">
-                                <rect key="frame" x="0.5" y="0.0" width="250" height="100"/>
+                                <rect key="frame" x="0.5" y="0.0" width="274" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="UMc-ki-As7"/>
@@ -157,7 +158,7 @@
                     <constraint firstItem="KbK-OR-5NO" firstAttribute="centerX" secondItem="6Ud-fV-7R9" secondAttribute="centerX" id="8WI-zI-Xll"/>
                     <constraint firstItem="KbK-OR-5NO" firstAttribute="centerY" secondItem="6Ud-fV-7R9" secondAttribute="centerY" id="Gio-S6-LXx"/>
                     <constraint firstItem="KbK-OR-5NO" firstAttribute="width" secondItem="6Ud-fV-7R9" secondAttribute="width" multiplier="1/3" id="UyJ-UX-SHO"/>
-                    <constraint firstItem="KbK-OR-5NO" firstAttribute="width" secondItem="6Ud-fV-7R9" secondAttribute="width" multiplier="2/3" id="gpr-YD-4hy"/>
+                    <constraint firstItem="KbK-OR-5NO" firstAttribute="width" secondItem="6Ud-fV-7R9" secondAttribute="width" multiplier="2/3" constant="24" id="gpr-YD-4hy"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -201,17 +202,17 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Rh-LH-6qV">
-                        <rect key="frame" x="62.5" y="261" width="250" height="145"/>
+                        <rect key="frame" x="50.5" y="261" width="274" height="145"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPb-8R-es4">
-                                <rect key="frame" x="0.5" y="101" width="250" height="44"/>
+                                <rect key="frame" x="0.5" y="101" width="274" height="44"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="cXl-hL-VJq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6q-FK-1iV">
-                                <rect key="frame" x="0.5" y="0.0" width="250" height="100"/>
+                                <rect key="frame" x="0.5" y="0.0" width="274" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="FmU-RA-L8k"/>
@@ -243,7 +244,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="4Rh-LH-6qV" firstAttribute="width" secondItem="box-uF-MVY" secondAttribute="width" multiplier="2/3" id="26p-xq-cAf"/>
+                    <constraint firstItem="4Rh-LH-6qV" firstAttribute="width" secondItem="box-uF-MVY" secondAttribute="width" multiplier="2/3" constant="24" id="26p-xq-cAf"/>
                     <constraint firstItem="4Rh-LH-6qV" firstAttribute="centerX" secondItem="box-uF-MVY" secondAttribute="centerX" id="9n1-pc-7cV"/>
                     <constraint firstItem="4Rh-LH-6qV" firstAttribute="centerY" secondItem="box-uF-MVY" secondAttribute="centerY" id="WEB-JS-usT"/>
                     <constraint firstItem="4Rh-LH-6qV" firstAttribute="width" secondItem="box-uF-MVY" secondAttribute="width" multiplier="1/3" id="YBe-QR-buG"/>

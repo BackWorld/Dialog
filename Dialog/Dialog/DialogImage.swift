@@ -29,9 +29,7 @@ class DialogImage: DialogViewController {
 	}
 	
 	override var calculatedInformationHeight: CGFloat{
-		return image != nil
-			? informationWrapperView.bounds.width
-			: 0
+		return image?.size.height ?? 0
 	}
 	
 	override var informationView: UIView?{
