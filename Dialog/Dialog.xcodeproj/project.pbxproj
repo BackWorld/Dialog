@@ -116,13 +116,13 @@
 			children = (
 				8010D1072059795B005AECFE /* Info.plist */,
 				8010D13820597CAB005AECFE /* Dialog.swift */,
+				804FE95A205C322100699C94 /* DialogExtensions.swift */,
+				80B0E05D205A4870001239A6 /* DialogTool.swift */,
 				8010D130205979E4005AECFE /* DialogViewController.swift */,
 				8010D13220597A13005AECFE /* DialogDefault.swift */,
 				8010D13420597A29005AECFE /* DialogImage.swift */,
 				8010D13620597A3A005AECFE /* DialogCustom.swift */,
-				804FE95A205C322100699C94 /* DialogExtensions.swift */,
 				80B0E05B205A4389001239A6 /* DialogActionView.swift */,
-				80B0E05D205A4870001239A6 /* DialogTool.swift */,
 				801259D7205BADD7004AC355 /* Dialog.xib */,
 			);
 			path = Dialog;

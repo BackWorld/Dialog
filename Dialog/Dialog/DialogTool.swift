@@ -41,10 +41,10 @@ struct DialogTool {
 	
 	static func topViewController(of parentViewController: UIViewController?) -> UIViewController?{
 		if let nav = parentViewController as? UINavigationController {
-			return nav.topViewController
+			return nav
 		}
 		if let tab = parentViewController as? UITabBarController {
-			return tab.selectedViewController
+			return tab
 		}
 		return parentViewController
 	}
