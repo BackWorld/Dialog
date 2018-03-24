@@ -134,7 +134,8 @@ public extension Dialog {
 public extension Dialog.Action{
 	public class Style {
         public static let `default` = Style()
-        public static let cancel = Style.custom(isBold: true)
+        public static let cancel = Style.custom(tintColor: .gray)
+        public static let primary = Style.custom(isBold: true)
         public static let destructive = Style.custom(tintColor: .red)
         
         public var tintColor: UIColor = Dialog.Configuration.default.primaryColor
@@ -147,7 +148,11 @@ public extension Dialog.Action{
                 : .systemFont(ofSize: 16)
         }
 		
-        public static func custom(tintColor: UIColor = Dialog.Configuration.default.primaryColor, alignment: UIControlContentHorizontalAlignment = .center, isBold: Bool = false) -> Style{
+        public static func custom(
+            tintColor: UIColor = Dialog.Configuration.default.primaryColor,
+            alignment: UIControlContentHorizontalAlignment = .center,
+            isBold: Bool = false) -> Style
+        {
             let instance = Style()
             instance.tintColor = tintColor
             instance.alignment = alignment

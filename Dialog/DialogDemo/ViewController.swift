@@ -32,7 +32,7 @@ class ViewController: UIViewController {
 		vc.collectionView?.delegate = self
 
 		Dialog.custom(vc.view, actions: [
-			Dialog.Action(title: "Cancel")
+            Dialog.Action(title: "Cancel", style: .cancel)
 		])
 	}
 }

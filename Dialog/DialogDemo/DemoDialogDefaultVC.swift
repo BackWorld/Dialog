@@ -74,6 +74,8 @@ class DemoDialogDefaultVC: UITableViewController {
 			action.style = .cancel
 		case 2:
 			action.style = .destructive
+        case 3:
+            action.style = .primary
 		default: break
 		}
 	}
@@ -97,6 +99,9 @@ class DemoDialogDefaultVC: UITableViewController {
 		Dialog.default(title: dtitle, message: message, actions: actions, configuration: configuration)
 	}
 	
+    @IBAction func dismiss(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension DemoDialogDefaultVC{

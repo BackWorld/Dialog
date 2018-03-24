@@ -409,6 +409,7 @@
                                                         <segment title="Default"/>
                                                         <segment title="Cancel"/>
                                                         <segment title="Destructive"/>
+                                                        <segment title="Primary"/>
                                                         <segment title="Custom"/>
                                                     </segments>
                                                     <connections>
@@ -540,6 +541,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Dialog Default" id="Dzq-Ch-Npx">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="gQR-fG-KaP">
+                            <connections>
+                                <action selector="dismiss:" destination="BeO-WA-Vcu" id="zeC-Dm-seL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Show" id="XAJ-14-Ard">
                             <connections>
                                 <action selector="showDialog:" destination="BeO-WA-Vcu" id="vAS-7j-Bz0"/>
@@ -646,6 +652,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="bzw-1t-vg6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8op-CM-D2U">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
