@@ -9,8 +9,10 @@
 import UIKit
 
 class DialogImage: DialogViewController {
-	
-	lazy var imageView: UIImageView = {
+// MARK: - IBOutlets
+    
+// MARK: - Properties
+	fileprivate lazy var imageView: UIImageView = {
 		let iv: UIImageView = UIImageView(frame: .zero)
 		iv.contentMode = .scaleAspectFill
 		iv.clipsToBounds = true
@@ -24,6 +26,7 @@ class DialogImage: DialogViewController {
 		}
 	}
 	
+// MARK: - Overrides
 	override class var nibViewController: DialogViewController?{
 		return DialogTool.nibs[1] as? DialogImage
 	}
@@ -35,17 +38,19 @@ class DialogImage: DialogViewController {
 	override var informationView: UIView?{
 		return imageView
 	}
-	
-	public static func show(image: UIImage?,
-							actions: [Dialog.Action]?,
-							configuration: Dialog.Configuration = .default)
-	{
-		if let vc = nibViewController as? DialogImage {
-			vc.configuration = configuration
-			vc.actions = actions
-			vc.image = image
-			DialogTool.topViewControllerOfApplicationKeyWindow?.present(vc, animated: false, completion: nil)
-		}
-	}
+}
 
+// MARK: - Public Methods
+extension DialogImage{
+    static func show(image: UIImage?,
+                     actions: [Dialog.Action]?,
+                     configuration: Dialog.Configuration = .default)
+    {
+        if let vc = nibViewController as? DialogImage {
+            vc.configuration = configuration
+            vc.actions = actions
+            vc.image = image
+            vc.present()
+        }
+    }
 }

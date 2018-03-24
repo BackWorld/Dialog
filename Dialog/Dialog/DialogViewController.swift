@@ -11,6 +11,8 @@ import UIKit
 let actionItemHeight: CGFloat = 40
 
 class DialogViewController: UIViewController {
+ 
+// MARK: - IBOutlets
     @IBOutlet weak var contentView: UIView!{
         didSet{
             contentView.clipsToBounds = true
@@ -22,34 +24,28 @@ class DialogViewController: UIViewController {
 	@IBOutlet weak var actionsWrapperView: UIView!
 	@IBOutlet weak var actionsWrapperViewHeightConstraint: NSLayoutConstraint!
     
+// MARK: - Properties
 	var actions: [Dialog.Action]? = nil{
 		didSet{
 			setupActionView()
 		}
 	}
 	
-	var configuration: Dialog.Configuration = .default
+	lazy var configuration: Dialog.Configuration = .default
     
     lazy var actionsView = DialogActionView(frame: .zero)
 	
-	var informationView: UIView?{
-		return nil
-	}
-	
-	class var nibViewController: DialogViewController?{
-		return nil
-	}
-	
+// MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		modalPresentationStyle = .overCurrentContext
-		view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+        view.backgroundColor = configuration.backgroundColor
 		contentView.layer.cornerRadius = CGFloat(configuration.cornerRadius)
 		contentView.alpha = 0
 		contentView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
@@ -66,21 +62,123 @@ class DialogViewController: UIViewController {
         
         remakeLayout()
     }
-	
-	fileprivate func remakeLayout(){
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        if configuration.isBackgroundViewUserInteractionEnabled{
+            dismiss(completion: nil)
+        }
+    }
+}
+
+// MARK: - Public Methods
+extension DialogViewController{
+    func makeInformationView(){
+        guard
+            let view = informationView,
+            !informationWrapperView.subviews.contains(view) else {
+                return
+        }
+        informationWrapperView.addSubview(view)
+        DialogTool.addEdgesLayoutsBetween(view: view,
+                                          andSuperView: informationWrapperView,
+                                          constants:
+            .init(top: 0, left: informationViewMargin, bottom: 0, right: -informationViewMargin))
+    }
+    
+    func present() {
+        let rootVC = DialogTool.applicationkeyWindowRootVC
+        rootVC?.present(self, animated: false, completion: nil)
+    }
+    
+    func dismiss(completion: (() -> Void)?) {
+        animate(isShowing: false, completion: completion)
+    }
+}
+
+// MARK: - Private Methods
+extension DialogViewController{
+    fileprivate func setupActionView(){
+        guard
+            let actions = actions,
+            !actions.isEmpty else {
+                actionsWrapperView.isHidden = true
+                actionsWrapperViewHeightConstraint.constant = 0
+                return
+        }
+        let view = actionsView
+        view.actions = actions
+        actionsWrapperView.addSubview(view)
+        DialogTool.addEdgesLayoutsBetween(view: view, andSuperView: actionsWrapperView)
+    }
+    
+    fileprivate func remakeLayout(){
         actionsView.reloadData()
-		makeInformationView()
-		adaptiveLayout()
-	}
-	
-	fileprivate func setScrollViews(in view: UIView, isScrollEnabled: Bool){
-		for sub in view.subviews {
-			if let sc = sub as? UIScrollView{
-				sc.isScrollEnabled = isScrollEnabled
-			}
-		}
-	}
-	
+        makeInformationView()
+        adaptiveLayout()
+    }
+    
+    fileprivate func setScrollViews(in view: UIView, isScrollEnabled: Bool){
+        for sub in view.subviews {
+            if let sc = sub as? UIScrollView{
+                sc.isScrollEnabled = isScrollEnabled
+            }
+        }
+    }
+    
+    fileprivate func adaptiveLayout(){
+        let totalValue = calculatedInformationHeight + calculatedActionsHeight
+        
+        let maxValue = UIScreen.main.bounds.height - actionItemHeight * 3
+        
+        guard totalValue > maxValue else {
+            informationWrapperViewHeightConstraint.constant = calculatedInformationHeight
+            actionsWrapperViewHeightConstraint.constant = calculatedActionsHeight
+            setScrollViews(in: informationWrapperView!, isScrollEnabled: false)
+            setScrollViews(in: actionsWrapperView, isScrollEnabled: false)
+            return
+        }
+        
+        let actions = self.actions ?? []
+        let actionsMinHeight = actions.isEmpty
+            ? 0
+            : (actions.count > 2 ? actionItemHeight * 1.5
+                : actionItemHeight
+        )
+        
+        let informationHeight = min(maxValue - actionsMinHeight, calculatedInformationHeight)
+        let actionsHeight = maxValue - informationHeight
+        
+        if informationHeight != calculatedInformationHeight {
+            setScrollViews(in: informationWrapperView, isScrollEnabled: true)
+        }
+        if actionsHeight != calculatedActionsHeight {
+            setScrollViews(in: actionsWrapperView, isScrollEnabled: true)
+        }
+        informationWrapperViewHeightConstraint.constant = informationHeight
+        actionsWrapperViewHeightConstraint.constant = actionsHeight
+    }
+    
+    fileprivate func animate(isShowing: Bool, completion: (() -> Void)? = nil){
+        UIView.animate(withDuration: isShowing ? 0.35 : 0.1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
+            self.contentView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            self.contentView.alpha = isShowing ? 1 : 0
+        }, completion: {
+            _ in
+            if !isShowing {
+                self.dismiss(animated: false, completion: completion)
+            }
+        })
+    }
+}
+
+// MARK: - Getter Properties
+extension DialogViewController{
+    var informationViewMargin: CGFloat{
+        return 0
+    }
+    
     var calculatedInformationHeight: CGFloat{
         return 0
     }
@@ -94,98 +192,11 @@ class DialogViewController: UIViewController {
             : actionItemHeight
     }
     
-	fileprivate func adaptiveLayout(){
-		let totalValue = calculatedInformationHeight + calculatedActionsHeight
-		
-		let maxValue = UIScreen.main.bounds.height - actionItemHeight * 3
-		
-		guard totalValue > maxValue else {
-            informationWrapperViewHeightConstraint.constant = calculatedInformationHeight
-            actionsWrapperViewHeightConstraint.constant = calculatedActionsHeight
-			setScrollViews(in: informationWrapperView!, isScrollEnabled: false)
-			setScrollViews(in: actionsWrapperView, isScrollEnabled: false)
-			return
-		}
-		
-		let actions = self.actions ?? []
-        let actionsMinHeight = actions.isEmpty
-            ? 0
-            : (actions.count > 2 ? actionItemHeight * 1.5
-			: actionItemHeight
-        )
-        
-        let informationHeight = min(maxValue - actionsMinHeight, calculatedInformationHeight)
-        let actionsHeight = maxValue - informationHeight
-        
-        if informationHeight != calculatedInformationHeight {
-            setScrollViews(in: informationWrapperView, isScrollEnabled: true)
-        }
-        if actionsHeight != calculatedActionsHeight {
-            setScrollViews(in: actionsWrapperView, isScrollEnabled: true)
-        }
-        informationWrapperViewHeightConstraint.constant = informationHeight
-		actionsWrapperViewHeightConstraint.constant = actionsHeight
-	}
-	
-	fileprivate func animate(isShowing: Bool, completion: (() -> Void)? = nil){
-		UIView.animate(withDuration: isShowing ? 0.35 : 0.1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
-			self.contentView.transform = CGAffineTransform(scaleX: 1, y: 1)
-			self.contentView.alpha = isShowing ? 1 : 0
-		}, completion: {
-			_ in
-			if !isShowing {
-				self.dismiss(animated: false, completion: completion)
-			}
-		})
-	}
-	
-	var informationViewMargin: CGFloat{
-		return 0
-	}
-	
-	func makeInformationView(){
-		guard
-			let view = informationView,
-			!informationWrapperView.subviews.contains(view) else {
-			return
-		}
-		view.translatesAutoresizingMaskIntoConstraints = false
-		informationWrapperView.addSubview(view)
-		
-		view.topAnchor.constraint(equalTo: informationWrapperView.topAnchor).isActive = true
-		view.bottomAnchor.constraint(equalTo: informationWrapperView.bottomAnchor).isActive = true
-		view.leadingAnchor.constraint(equalTo: informationWrapperView.leadingAnchor, constant: informationViewMargin).isActive = true
-		view.trailingAnchor.constraint(equalTo: informationWrapperView.trailingAnchor, constant: -informationViewMargin).isActive = true
-	}
-	
-	func dismiss(completion: (() -> Void)?) {
-		animate(isShowing: false, completion: completion)
-	}
-	
-	fileprivate func setupActionView(){
-		guard
-			let actions = actions,
-			!actions.isEmpty else {
-				actionsWrapperView.isHidden = true
-				actionsWrapperViewHeightConstraint.constant = 0
-				return
-		}
-		let v = actionsView
-		v.actions = actions
-		v.translatesAutoresizingMaskIntoConstraints = false
-		actionsWrapperView.addSubview(v)
-		
-		v.topAnchor.constraint(equalTo: actionsWrapperView.topAnchor).isActive = true
-		v.bottomAnchor.constraint(equalTo: actionsWrapperView.bottomAnchor).isActive = true
-		v.leadingAnchor.constraint(equalTo: actionsWrapperView.leadingAnchor).isActive = true
-		v.trailingAnchor.constraint(equalTo: actionsWrapperView.trailingAnchor).isActive = true
-	}
-	
-	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		super.touchesBegan(touches, with: event)
-		
-		if configuration.isBackgroundViewUserInteractionEnabled{
-			dismiss(completion: nil)
-		}
-	}
+    var informationView: UIView?{
+        return nil
+    }
+    
+    class var nibViewController: DialogViewController?{
+        return nil
+    }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - Configuration
 public extension Dialog {
 	public class Configuration {
 		public static let `default` = Configuration()
@@ -24,12 +25,14 @@ public extension Dialog {
 		}
 		public var isBackgroundViewUserInteractionEnabled = false
 		public var primaryColor: UIColor = .black
+        public var backgroundColor = UIColor.black.withAlphaComponent(0.4)
 		
 		public init(){
 		}
 	}
 }
 
+// MARK: - Title
 public extension Dialog{
     public class Title {
         public var text: String? = nil
@@ -71,6 +74,7 @@ public extension Dialog{
     }
 }
 
+// MARK: - Message
 public extension Dialog{
 	public class Message {
 		public var text: String? = nil
@@ -104,6 +108,7 @@ public extension Dialog{
 	}
 }
 
+// MARK: - Action
 public extension Dialog {
 	public class Action {
         public typealias Handler = ((Action) -> Void)
@@ -125,6 +130,7 @@ public extension Dialog {
     }
 }
 
+// MARK: - Style
 public extension Dialog.Action{
 	public class Style {
         public static let `default` = Style()

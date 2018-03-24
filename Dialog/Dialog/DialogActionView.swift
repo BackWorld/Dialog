@@ -38,10 +38,7 @@ final class DialogActionView: UICollectionView{
 			super.init(frame: frame)
 			
 			contentView.addSubview(button)
-			button.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-			button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-			button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-			button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+            DialogTool.addEdgesLayoutsBetween(view: button, andSuperView: contentView)
 		}
 		
 		required init?(coder aDecoder: NSCoder) {

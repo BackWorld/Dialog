@@ -8,9 +8,14 @@
 
 import UIKit
 
+
 class DialogCustom: DialogViewController {
+// MARK: - IBOutlets
+    
+// MARK: - Properties
 	fileprivate var customView: UIView!
 	
+// MARK: - Overrides
 	override var informationView: UIView?{
 		return customView
 	}
@@ -22,24 +27,22 @@ class DialogCustom: DialogViewController {
 	override class var nibViewController: DialogViewController?{
 		return DialogTool.nibs.last as? DialogCustom
 	}
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+}
 
+// MARK: - Public Methods
+extension DialogCustom{
+    static func show(customView: UIView,
+                     actions: [Dialog.Action]?,
+                     configuration: Dialog.Configuration = .default)
+    {
+        if let vc = nibViewController as? DialogCustom {
+            vc.configuration = configuration
+            vc.actions = actions
+            vc.customView = customView
+            vc.present()
+            if let holder = DialogTool.holderViewController(for: customView) {
+                vc.addChildViewController(holder)
+            }
+        }
     }
-
-	public static func show(customView: UIView!,
-							actions: [Dialog.Action]?,
-							configuration: Dialog.Configuration = .default)
-	{
-		if let vc = nibViewController as? DialogCustom {
-			vc.configuration = configuration
-			vc.actions = actions
-			vc.customView = customView
-				DialogTool.topViewControllerOfApplicationKeyWindow?.present(vc, animated: false, completion: nil)
-			if let holder = DialogTool.holderViewController(for: customView) {
-				vc.addChildViewController(holder)
-			}
-		}
-	}
 }
