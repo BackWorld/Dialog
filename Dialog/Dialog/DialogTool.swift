@@ -9,7 +9,6 @@
 import UIKit
 
 struct DialogTool {
-    static let applicationkeyWindowRootVC = UIApplication.shared.keyWindow?.rootViewController
 	static let resourcePath = "Frameworks/Dialog.framework"
 	
 	static var nibs: [Any]{
@@ -31,6 +30,24 @@ struct DialogTool {
 		}
 		return nil
 	}
+    
+    static var topViewControllerOfApplicationKeyWindow: UIViewController? {
+        var vc = topViewController(of: UIApplication.shared.keyWindow?.rootViewController)
+        while vc?.presentedViewController != nil {
+            vc = topViewController(of: vc?.presentedViewController)
+        }
+        return topViewController(of: vc)
+    }
+    
+    static func topViewController(of parentViewController: UIViewController?) -> UIViewController?{
+        if let nav = parentViewController as? UINavigationController {
+            return nav
+        }
+        if let tab = parentViewController as? UITabBarController {
+            return tab
+        }
+        return parentViewController
+    }
     
     static func addEdgesLayoutsBetween(view: UIView, andSuperView superView: UIView, constants: UIEdgeInsets = .zero){
         view.translatesAutoresizingMaskIntoConstraints = false

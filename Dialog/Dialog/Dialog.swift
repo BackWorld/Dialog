@@ -9,11 +9,12 @@
 import UIKit
 
 public struct Dialog {
-    public static func dismiss(){
-        if
-            let vc = DialogTool.applicationkeyWindowRootVC?.presentedViewController,
-            vc.isKind(of: DialogViewController.self){
-            vc.dismiss(animated: false, completion: nil)
+    public static func dismiss(completion: (() -> Void)?){
+        if let vc = DialogTool.topViewControllerOfApplicationKeyWindow, vc.isKind(of: DialogViewController.self){
+            vc.dismiss(animated: false, completion: completion)
+        }
+        else{
+            completion?()
         }
     }
     
@@ -22,22 +23,25 @@ public struct Dialog {
                                  actions: [Dialog.Action]? = nil,
                                  configuration: Dialog.Configuration = .default)
     {
-        Dialog.dismiss()
-        DialogDefault.show(title: title, message: message, actions: actions, configuration: configuration)
+        Dialog.dismiss {
+            DialogDefault.show(title: title, message: message, actions: actions, configuration: configuration)
+        }
     }
     
     public static func image(_ image: UIImage? = nil,
 							 actions: [Dialog.Action]? = nil,
 							 configuration: Dialog.Configuration = .default)
     {
-        Dialog.dismiss()
-		DialogImage.show(image: image, actions: actions, configuration: configuration)
+        Dialog.dismiss{
+            DialogImage.show(image: image, actions: actions, configuration: configuration)
+        }
     }
     
 	public static func custom(_ view: UIView,
 							  actions: [Dialog.Action]? = nil,
 							  configuration:Dialog.Configuration = .default)
-    {   Dialog.dismiss()
-        DialogCustom.show(customView: view, actions: actions, configuration: configuration)
+    {   Dialog.dismiss{
+            DialogCustom.show(customView: view, actions: actions, configuration: configuration)
+        }
     }
 }

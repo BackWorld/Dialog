@@ -88,8 +88,8 @@ extension DialogViewController{
     }
     
     func present() {
-        let rootVC = DialogTool.applicationkeyWindowRootVC
-        rootVC?.present(self, animated: false, completion: nil)
+        let vc = DialogTool.topViewControllerOfApplicationKeyWindow
+        vc?.present(self, animated: false, completion: nil)
     }
     
     func dismiss(completion: (() -> Void)?) {
