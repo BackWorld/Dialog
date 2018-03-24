@@ -8,7 +8,7 @@
 
 import UIKit
 
-let actionItemHeight: CGFloat = 40
+let actionItemHeight: CGFloat = 44
 
 class DialogViewController: UIViewController {
  
