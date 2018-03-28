@@ -64,8 +64,13 @@ class DialogViewController: UIViewController {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        
+		let touch = touches.first!
+		let location = touch.preciseLocation(in: view)
+		let point = view.convert(location, to: contentView)
+		if contentView.bounds.contains(point){
+			return
+		}
+		
         if configuration.isBackgroundViewUserInteractionEnabled{
             dismiss(completion: nil)
         }
