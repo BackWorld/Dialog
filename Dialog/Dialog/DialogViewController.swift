@@ -40,6 +40,7 @@ class DialogViewController: UIViewController {
         super.viewDidLoad()
 		
 		modalPresentationStyle = .overCurrentContext
+		view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selfViewDidTap(_:))))
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -62,19 +63,6 @@ class DialogViewController: UIViewController {
         
         remakeLayout()
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		let touch = touches.first!
-		let location = touch.preciseLocation(in: view)
-		let point = view.convert(location, to: contentView)
-		if contentView.bounds.contains(point){
-			return
-		}
-		
-        if configuration.isBackgroundViewUserInteractionEnabled{
-            dismiss(completion: nil)
-        }
-    }
 }
 
 // MARK: - Public Methods
@@ -86,9 +74,7 @@ extension DialogViewController{
                 return
         }
         informationWrapperView.addSubview(view)
-        DialogTool.addEdgesLayoutsBetween(view: view,
-                                          andSuperView: informationWrapperView,
-                                          constants:
+        DialogTool.addEdgesLayoutsBetween(view: view,andSuperView: informationWrapperView,constants:
             .init(top: 0, left: informationViewMargin, bottom: 0, right: -informationViewMargin))
     }
     
@@ -104,6 +90,24 @@ extension DialogViewController{
 
 // MARK: - Private Methods
 extension DialogViewController{
+	func selfViewDidTap(_ sender: UIGestureRecognizer) {
+		if sender.state == .ended {
+			let location = sender.location(in: view)
+			let point = view.convert(location, to: contentView)
+			
+//			print("\(location) - \(point)")
+			
+			guard !contentView.bounds.contains(point) else{
+				return
+			}
+			
+			if configuration.isBackgroundViewUserInteractionEnabled{
+				dismiss(completion: nil)
+			}
+		}
+	}
+	
+	
     fileprivate func setupActionView(){
         guard
             let actions = actions,
