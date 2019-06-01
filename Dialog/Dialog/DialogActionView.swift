@@ -25,7 +25,7 @@ final class DialogActionView: UICollectionView{
 			let btn: UIButton = UIButton(type: .system)
 			btn.backgroundColor = .white
 			btn.translatesAutoresizingMaskIntoConstraints = false
-			btn.titleEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 15)
+            btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
 			btn.imageEdgeInsets = btn.titleEdgeInsets
 			btn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
             btn.addTarget(self, action: #selector(buttonTouchUp), for: .touchUpOutside)

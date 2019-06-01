@@ -15,9 +15,9 @@ struct DialogTool {
 		return Bundle.main.loadNibNamed("\(resourcePath)/Dialog", owner: nil, options: nil) ?? []
 	}
 	
-	static func attributes(for text: NSAttributedString) -> [String: Any]{
-		var range = NSMakeRange(0, text.string.characters.count)
-		return text.attributes(at: 0, effectiveRange: &range)
+    static func attributes(for text: NSAttributedString) -> [NSAttributedString.Key: Any]{
+		var range = NSMakeRange(0, text.string.count)
+        return text.attributes(at: 0, effectiveRange: &range)
 	}
 	
 	static func holderViewController(for view: UIView) -> UIViewController? {

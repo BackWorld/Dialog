@@ -27,7 +27,7 @@ class DemoDialogDefaultVC: UITableViewController {
 		message.text = messageTF.text
 		action.title = actionTF.text
 		
-		NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: Notification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
     }
 
 	@IBAction func cornerRadius(_ sender: UISlider) {
@@ -87,7 +87,7 @@ class DemoDialogDefaultVC: UITableViewController {
 	
 	@IBAction func actionStyleAlignment(_ sender: UISegmentedControl) {
 		let index = sender.selectedSegmentIndex
-		let aligment = UIControlContentHorizontalAlignment(rawValue: index)!
+        let aligment = UIControl.ContentHorizontalAlignment(rawValue: index)!
 		action.style.alignment = aligment
 	}
 	
@@ -105,7 +105,7 @@ class DemoDialogDefaultVC: UITableViewController {
 }
 
 extension DemoDialogDefaultVC{
-	func textFieldDidChange(_ sender: Notification){
+    @objc func textFieldDidChange(_ sender: Notification){
 		let textField = sender.object as! UITextField
 		switch textField {
 		case titleTF:

@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Configuration
 public extension Dialog {
-	public class Configuration {
+    class Configuration {
 		public static let `default` = Configuration()
 		
 		public var cornerRadius: Int = 0{
@@ -34,7 +34,7 @@ public extension Dialog {
 
 // MARK: - Title
 public extension Dialog{
-    public class Title {
+    class Title {
         public var text: String? = nil
         public var color: UIColor = Dialog.Configuration.default.primaryColor
         public var alignment: NSTextAlignment = .center{
@@ -48,15 +48,15 @@ public extension Dialog{
             }
         }
         
-		var attributes: [String: Any] {
-            var attributes: [String: Any] = [
-				NSForegroundColorAttributeName: self.color,
-                NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16)
+		var attributes: [NSAttributedString.Key: Any] {
+            var attributes: [NSAttributedString.Key: Any] = [
+                NSAttributedString.Key.foregroundColor: self.color,
+                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)
             ]
             let paragraph = NSMutableParagraphStyle()
             paragraph.lineHeightMultiple = 1.5
             paragraph.alignment = self.alignment
-            attributes.updateValue(paragraph, forKey: NSParagraphStyleAttributeName)
+            attributes.updateValue(paragraph, forKey: NSAttributedString.Key.paragraphStyle)
             return attributes
 		}
 
@@ -76,7 +76,7 @@ public extension Dialog{
 
 // MARK: - Message
 public extension Dialog{
-	public class Message {
+    class Message {
 		public var text: String? = nil
 		public var attributedText: NSAttributedString? = nil
 		
@@ -86,8 +86,8 @@ public extension Dialog{
 				paragraph.lineHeightMultiple = 1.5
 				paragraph.alignment = .center
 				return NSAttributedString(string: text, attributes: [
-					NSFontAttributeName: UIFont.systemFont(ofSize: 14),
-					NSParagraphStyleAttributeName: paragraph
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),
+                    NSAttributedString.Key.paragraphStyle: paragraph
 				])
 			}
 			else if let attributedText = attributedText {
@@ -110,7 +110,7 @@ public extension Dialog{
 
 // MARK: - Action
 public extension Dialog {
-	public class Action {
+    class Action {
         public typealias Handler = ((Action) -> Void)
 
         public var icon: UIImage? = nil
@@ -132,14 +132,14 @@ public extension Dialog {
 
 // MARK: - Style
 public extension Dialog.Action{
-	public class Style {
+    class Style {
         public static let `default` = Style()
         public static let cancel = Style.custom(tintColor: .gray)
         public static let primary = Style.custom(isBold: true)
         public static let destructive = Style.custom(tintColor: .red)
         
         public var tintColor: UIColor = Dialog.Configuration.default.primaryColor
-        public var alignment: UIControlContentHorizontalAlignment = .center
+        public var alignment: UIControl.ContentHorizontalAlignment = .center
         public var isBold = false //是否加重显示
         
         var font: UIFont{
@@ -150,7 +150,7 @@ public extension Dialog.Action{
 		
         public static func custom(
             tintColor: UIColor = Dialog.Configuration.default.primaryColor,
-            alignment: UIControlContentHorizontalAlignment = .center,
+            alignment: UIControl.ContentHorizontalAlignment = .center,
             isBold: Bool = false) -> Style
         {
             let instance = Style()

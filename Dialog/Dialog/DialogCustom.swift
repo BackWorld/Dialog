@@ -41,7 +41,7 @@ extension DialogCustom{
             vc.customView = customView
             vc.present()
             if let holder = DialogTool.holderViewController(for: customView) {
-                vc.addChildViewController(holder)
+                vc.addChild(holder)
             }
         }
     }

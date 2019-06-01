@@ -19,7 +19,7 @@ class DialogViewController: UIViewController {
         }
     }
 	@IBOutlet weak var informationWrapperView: UIView!
-	@IBOutlet weak var informationWrapperViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var informationWrapperViewHeightConstraint: NSLayoutConstraint!
 	
 	@IBOutlet weak var actionsWrapperView: UIView!
 	@IBOutlet weak var actionsWrapperViewHeightConstraint: NSLayoutConstraint!
@@ -36,6 +36,14 @@ class DialogViewController: UIViewController {
     lazy var actionsView = DialogActionView(frame: .zero)
 	
 // MARK: - Overrides
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -49,7 +57,7 @@ class DialogViewController: UIViewController {
         view.backgroundColor = configuration.backgroundColor
 		contentView.layer.cornerRadius = CGFloat(configuration.cornerRadius)
 		contentView.alpha = 0
-		contentView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        contentView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
     }
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -67,7 +75,7 @@ class DialogViewController: UIViewController {
 
 // MARK: - Public Methods
 extension DialogViewController{
-    func makeInformationView(){
+    @objc func makeInformationView(){
         guard
             let view = informationView,
             !informationWrapperView.subviews.contains(view) else {
@@ -90,7 +98,7 @@ extension DialogViewController{
 
 // MARK: - Private Methods
 extension DialogViewController{
-	func selfViewDidTap(_ sender: UIGestureRecognizer) {
+    @objc func selfViewDidTap(_ sender: UIGestureRecognizer) {
 		if sender.state == .ended {
 			let location = sender.location(in: view)
 			let point = view.convert(location, to: contentView)
@@ -184,11 +192,11 @@ extension DialogViewController{
 
 // MARK: - Getter Properties
 extension DialogViewController{
-    var informationViewMargin: CGFloat{
+    @objc var informationViewMargin: CGFloat{
         return 0
     }
     
-    var calculatedInformationHeight: CGFloat{
+    @objc var calculatedInformationHeight: CGFloat{
         return 0
     }
     
@@ -201,11 +209,11 @@ extension DialogViewController{
             : actionItemHeight
     }
     
-    var informationView: UIView?{
+    @objc var informationView: UIView?{
         return nil
     }
     
-    class var nibViewController: DialogViewController?{
+    @objc class var nibViewController: DialogViewController?{
         return nil
     }
 }
